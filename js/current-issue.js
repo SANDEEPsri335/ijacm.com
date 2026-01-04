@@ -1,6 +1,6 @@
 /* ======================================================
-   IJACM – CURRENT ISSUE (FINAL FIXED VERSION)
-   Every CSV row = One visible article box
+   IJACM – CURRENT ISSUE (HEADER-BASED CSV PARSER)
+   Every CSV row = One article card (GUARANTEED)
    ====================================================== */
 
 const CSV_PATH = "/data.csv";
@@ -17,13 +17,13 @@ fetch(CSV_PATH)
     if (!res.ok) throw new Error("CSV not found");
     return res.text();
   })
-  .then(csvText => {
-    if (!csvText.trim()) {
+  .then(text => {
+    if (!text.trim()) {
       showEmptyState();
       return;
     }
 
-    allArticles = parseCSV(csvText);
+    allArticles = parseCSVWithHeaders(text);
 
     if (allArticles.length === 0) {
       showEmptyState();
@@ -39,52 +39,43 @@ fetch(CSV_PATH)
   });
 
 /* ==============================
-   PARSE CSV
+   HEADER-BASED CSV PARSER
 ================================ */
-function parseCSV(text) {
-  const lines = text.trim().split("\n");
-  const articles = [];
+function parseCSVWithHeaders(text) {
+  const lines = text.trim().split(/\r?\n/);
+
+  // Detect separator: comma OR tab
+  const separator = lines[0].includes(",") ? "," : "\t";
+
+  const headers = lines[0]
+    .split(separator)
+    .map(h => h.trim());
+
+  const rows = [];
 
   for (let i = 1; i < lines.length; i++) {
-    const row = splitCSVLine(lines[i]);
-    if (row.length < 6) continue;
+    if (!lines[i].trim()) continue;
 
-    articles.push({
-      title: row[0]?.trim() || "Untitled",
-      author: row[1]?.trim() || "N/A",
-      issueNo: row[2]?.trim() || "N/A",
-      doi: row[3]?.trim() || "N/A",
-      paperFile: row[4]?.trim() || "",
-      publishedDate: row[5]?.trim() || "N/A"
+    const values = lines[i]
+      .split(separator)
+      .map(v => v.trim());
+
+    const row = {};
+    headers.forEach((h, idx) => {
+      row[h] = values[idx] || "";
+    });
+
+    rows.push({
+      title: row["Title"] || "Untitled",
+      author: row["Author"] || "N/A",
+      issueNo: row["Issue_No"] || "N/A",
+      doi: row["DOI"] || "N/A",
+      paperFile: row["Paper_File"] || "",
+      publishedDate: row["Published_Date"] || "N/A"
     });
   }
 
-  return articles;
-}
-
-/* ==============================
-   SAFE CSV LINE SPLITTER
-================================ */
-function splitCSVLine(line) {
-  const result = [];
-  let current = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-
-    if (char === '"') {
-      inQuotes = !inQuotes;
-    } else if (char === "," && !inQuotes) {
-      result.push(current);
-      current = "";
-    } else {
-      current += char;
-    }
-  }
-  result.push(current);
-
-  return result;
+  return rows;
 }
 
 /* ==============================
