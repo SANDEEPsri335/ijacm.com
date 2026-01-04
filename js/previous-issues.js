@@ -121,12 +121,9 @@ function initializePage(articles) {
   const container = document.getElementById("volumes-container");
   const statsBadge = document.getElementById("stats-badge");
 
-  statsBadge.textContent = `${articles.length} Articles | ${new Set(
-    articles.map(a => `${a.year}-${a.month}`)
-  ).size} Issues`;
-
   const groups = {};
   articles.forEach(a => {
+    if (!a.dateObj) return;
     const key = `${a.year}-${a.month}`;
     if (!groups[key]) groups[key] = [];
     groups[key].push(a);
@@ -135,18 +132,28 @@ function initializePage(articles) {
   const keys = Object.keys(groups).sort().reverse();
   container.innerHTML = "";
 
+  statsBadge.textContent = `${articles.length} Articles | ${keys.length} Issues`;
+
   keys.forEach((key, index) => {
     const group = groups[key];
-    const d = group[0].dateObj;
+
+    // ✅ SAFE DATE EXTRACTION
+    const validArticle = group.find(a => a.dateObj instanceof Date);
+    if (!validArticle) return;
+
+    const d = validArticle.dateObj;
+    const month = monthNames[d.getMonth()];
+    const year = d.getFullYear();
 
     const accordion = document.createElement("div");
     accordion.className = "volume-accordion";
 
     accordion.innerHTML = `
       <button class="volume-header">
-        <span>Volume ${index + 1} • ${monthNames[d.getMonth()]} ${d.getFullYear()}</span>
+        <span>Volume ${index + 1} • ${month} ${year}</span>
         <span class="volume-badge">${group.length} Articles</span>
       </button>
+
       <div class="volume-content">
         <div class="articles-grid">
           ${group.map(a => `
