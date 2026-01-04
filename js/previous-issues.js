@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("../data.csv")
+  fetch("/data.csv") // ✅ ABSOLUTE PATH (FIXED)
     .then(res => {
       if (!res.ok) throw new Error("CSV not found");
       return res.text();
