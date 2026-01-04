@@ -1,158 +1,158 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/data.csv", { cache: "no-store" })
-    .then(res => {
-      if (!res.ok) throw new Error("CSV not found");
-      return res.text();
-    })
-    .then(text => {
-      if (text.startsWith("<")) throw new Error("HTML returned instead of CSV");
-      const articles = parseCSVWithHeaders(text);
-      initializePage(articles);
-    })
-    .catch(err => {
-      console.error("ARCHIVE LOAD ERROR:", err);
-      showError();
-    });
+    fetch("/data.csv") // ✅ FIXED PATH
+        .then(res => res.text())
+        .then(csvText => {
+            const articles = parseCSV(csvText);
+            initializePage(articles);
+        })
+        .catch(err => {
+            console.error("Error loading CSV:", err);
+            document.getElementById("volumes-container").innerHTML = `
+                <div class="empty-state">
+                    <h3>Error Loading Archives</h3>
+                    <p>Unable to load publication data.</p>
+                </div>
+            `;
+        });
 });
 
-/* ==============================
-   UI ERROR
-================================ */
-function showError() {
-  const container = document.getElementById("volumes-container");
-  container.innerHTML = `
-    <div class="empty-state">
-      <h3>Error Loading Archives</h3>
-      <p>Please try again later.</p>
-    </div>
-  `;
+const monthMap = {
+    jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+    jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+};
+const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function parseDate(dateStr) {
+    if (!dateStr) return null;
+    const parts = dateStr.trim().split("-");
+    if (parts.length !== 3) return null;
+
+    const day = parseInt(parts[0], 10);
+    const month = monthMap[parts[1].toLowerCase()];
+    let year = parseInt(parts[2], 10);
+
+    if (year < 100) year += 2000;
+    if (isNaN(day) || month === undefined || isNaN(year)) return null;
+
+    return new Date(year, month, day);
 }
 
-/* ==============================
-   CONSTANTS
-================================ */
-const monthNames = ["Jan","Feb","Mar","Apr","May","Jun",
-                    "Jul","Aug","Sep","Oct","Nov","Dec"];
+function parseCSV(text) {
+    const lines = text.trim().split("\n");
+    const articles = [];
 
-/* ==============================
-   CSV PARSER (HEADER BASED)
-================================ */
-function parseCSVWithHeaders(text) {
-  const lines = text.trim().split(/\r?\n/);
-  if (lines.length < 2) return [];
+    for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
 
-  const sep = lines[0].includes(",") ? "," : "\t";
-  const headers = lines[0].split(sep).map(h => h.trim());
-  const rows = [];
+        const row = lines[i]
+            .split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
+            .map(v => v.replace(/^"|"$/g, "").trim());
 
-  for (let i = 1; i < lines.length; i++) {
-    if (!lines[i].trim()) continue;
+        if (row.length < 6) continue;
 
-    const values = lines[i].split(sep).map(v => v.trim());
-    const row = {};
-    headers.forEach((h, idx) => row[h] = values[idx] || "");
+        const dateObj = parseDate(row[5]);
+        if (!dateObj) continue;
 
-    const dateObj = parseDate(row["Published_Date"]);
-    if (!dateObj) continue;
-
-    rows.push({
-      title: row["Title"],
-      authors: row["Author"],
-      doi: row["DOI"],
-      paperFile: row["Paper_File"],
-      publishedDate: row["Published_Date"],
-      dateObj,
-      year: dateObj.getFullYear(),
-      month: dateObj.getMonth()
-    });
-  }
-  return rows;
+        articles.push({
+            title: row[0],
+            authors: row[1],
+            issue: row[2],
+            doi: row[3],
+            paperFile: row[4],              // ✅ PDF FILE NAME
+            publishedDateStr: row[5],
+            dateObj,
+            year: dateObj.getFullYear(),
+            month: dateObj.getMonth()
+        });
+    }
+    return articles;
 }
 
-/* ==============================
-   DATE PARSER
-================================ */
-function parseDate(str) {
-  if (!str) return null;
-  const parts = str.split("-");
-  if (parts.length !== 3) return null;
-
-  const day = parseInt(parts[0], 10);
-  const months = {
-    jan:0,feb:1,mar:2,apr:3,may:4,jun:5,
-    jul:6,aug:7,sep:8,oct:9,nov:10,dec:11
-  };
-
-  const month = months[parts[1].toLowerCase()];
-  let year = parseInt(parts[2], 10);
-  if (year < 100) year += 2000;
-
-  const d = new Date(year, month, day);
-  return isNaN(d.getTime()) ? null : d;
-}
-
-/* ==============================
-   PAGE RENDER
-================================ */
 function initializePage(articles) {
-  const container = document.getElementById("volumes-container");
-  const stats = document.getElementById("stats-badge");
+    const container = document.getElementById("volumes-container");
+    const yearFilter = document.getElementById("year-filter");
+    const volumeFilter = document.getElementById("volume-filter");
+    const statsBadge = document.getElementById("stats-badge");
 
-  if (!articles.length) {
-    showError();
-    return;
-  }
+    if (!articles.length) {
+        container.innerHTML = `<div class="empty-state"><h3>No Archives Found</h3></div>`;
+        statsBadge.textContent = "0 Articles";
+        return;
+    }
 
-  // GROUP BY YEAR-MONTH
-  const groups = {};
-  articles.forEach(a => {
-    const key = `${a.year}-${a.month}`;
-    if (!groups[key]) groups[key] = [];
-    groups[key].push(a);
-  });
+    const groups = {};
+    articles.forEach(a => {
+        const key = `${a.year}-${a.month}`;
+        if (!groups[key]) {
+            groups[key] = { year: a.year, month: a.month, articles: [] };
+        }
+        groups[key].articles.push(a);
+    });
 
-  const keys = Object.keys(groups).sort().reverse();
-  stats.textContent = `${articles.length} Articles | ${keys.length} Issues`;
+    const sortedKeys = Object.keys(groups).sort((a, b) => {
+        const [y1, m1] = a.split("-").map(Number);
+        const [y2, m2] = b.split("-").map(Number);
+        return y1 !== y2 ? y1 - y2 : m1 - m2;
+    });
 
-  container.innerHTML = "";
+    sortedKeys.forEach((key, index) => {
+        groups[key].volumeNumber = index + 1;
+        groups[key].articles.sort((a, b) => b.dateObj - a.dateObj);
+    });
 
-  keys.forEach((key, index) => {
-    const group = groups[key];
-    const d = group[0].dateObj;
+    statsBadge.textContent = `${articles.length} Articles | ${sortedKeys.length} Issues`;
 
-    const accordion = document.createElement("div");
-    accordion.className = "volume-accordion";
+    function render(filterYear = "all", filterVol = "all") {
+        container.innerHTML = "";
+        let hasContent = false;
 
-    accordion.innerHTML = `
-      <button class="volume-header">
-        <span>
-          Volume ${index + 1} • ${monthNames[d.getMonth()]} ${d.getFullYear()}
-        </span>
-        <span class="volume-badge">${group.length} Articles</span>
-      </button>
+        [...sortedKeys].reverse().forEach(key => {
+            const group = groups[key];
+            if (filterYear !== "all" && group.year.toString() !== filterYear) return;
+            if (filterVol !== "all" && group.volumeNumber.toString() !== filterVol) return;
 
-      <div class="volume-content">
-        <div class="articles-grid">
-          ${group.map(a => `
-            <div class="article-card">
-              <h4>${a.title}</h4>
-              <div>${a.authors}</div>
-              <div>${a.publishedDate}</div>
-              ${
-                a.paperFile
-                  ? `<a href="/paper/${a.paperFile}" target="_blank">View Paper</a>`
-                  : `<span>Paper N/A</span>`
-              }
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `;
+            hasContent = true;
+            const monthName = monthNames[group.month];
 
-    accordion.querySelector(".volume-header").onclick = () => {
-      accordion.classList.toggle("active");
-    };
+            const accordion = document.createElement("div");
+            accordion.className = "volume-accordion";
 
-    container.appendChild(accordion);
-  });
+            accordion.innerHTML = `
+                <button class="volume-header">
+                    <span>Volume ${group.volumeNumber} Issue ${group.volumeNumber} • ${monthName} ${group.year}</span>
+                    <span class="volume-badge">${group.articles.length} Articles</span>
+                </button>
+                <div class="volume-content">
+                    <div class="articles-grid">
+                        ${group.articles.map(a => `
+                            <div class="article-card">
+                                <h4>${a.title}</h4>
+                                <div>${a.authors}</div>
+                                <div>${a.publishedDateStr}</div>
+                                <div class="article-actions">
+                                    ${a.paperFile
+                                        ? `<a href="/paper/${a.paperFile}" target="_blank" class="btn-view">
+                                             View Paper
+                                           </a>`
+                                        : `<span>No File</span>`
+                                    }
+                                </div>
+                            </div>
+                        `).join("")}
+                    </div>
+                </div>
+            `;
+
+            accordion.querySelector(".volume-header").onclick = () =>
+                accordion.classList.toggle("active");
+
+            container.appendChild(accordion);
+        });
+
+        if (!hasContent) {
+            container.innerHTML = `<div class="empty-state"><h3>No Matches</h3></div>`;
+        }
+    }
+
+    render();
 }
