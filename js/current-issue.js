@@ -42,59 +42,32 @@ fetch(CSV_PATH)
 ================================ */
 function parseCSVWithHeaders(text) {
   const lines = text.trim().split(/\r?\n/);
-
-  // Detect separator: comma OR tab
-  const separator = lines[0].includes(",") ? "," : "\t";
-
-  // Clean headers
-  const headers = lines[0]
-    .split(separator)
-    .map(h => h.trim().replace(/\uFEFF/g, "").toLowerCase());
-
   const rows = [];
 
   for (let i = 1; i < lines.length; i++) {
     if (!lines[i].trim()) continue;
 
-    const values = lines[i].split(separator).map(v => v.trim());
+    // IMPORTANT: handle comma OR tab safely
+    const values = lines[i]
+      .split(/,|\t/)
+      .map(v => v.replace(/^"|"$/g, "").trim());
 
-    // Header map
-    const row = {};
-    headers.forEach((h, idx) => {
-      row[h] = values[idx] || "";
-    });
-
-    // ✅ FINAL FIX: HEADER + POSITION FALLBACK
     rows.push({
-      title: row["title"] || values[0] || "Untitled",
-      author: row["author"] || values[1] || "N/A",
+      title: values[0] || "Untitled",
+      author: values[1] || "N/A",
 
-      // THIS is why old code worked
-      issueNo:
-        row["issue_no"] ||
-        row["issue"] ||
-        values[2] ||           // ← OLD LOGIC
-        "N/A",
+      // ✅ THIS IS THE KEY (OLD LOGIC)
+      issueNo: values[2] || "N/A",
+      doi: values[3] || "N/A",
 
-      doi:
-        row["doi"] ||
-        values[3] ||           // ← OLD LOGIC
-        "N/A",
-
-      paperFile:
-        row["paper_file"] ||
-        values[4] ||
-        "",
-
-      publishedDate:
-        row["published_date"] ||
-        values[5] ||
-        "N/A"
+      paperFile: values[4] || "",
+      publishedDate: values[5] || "N/A"
     });
   }
 
   return rows;
 }
+
 
 /* ==============================
    RENDER ARTICLES (UNCHANGED)
