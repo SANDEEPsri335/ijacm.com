@@ -42,8 +42,11 @@ fetch(CSV_PATH)
 ================================ */
 function parseCSVWithHeaders(text) {
   const lines = text.trim().split(/\r?\n/);
+
+  // Detect separator: comma OR tab
   const separator = lines[0].includes(",") ? "," : "\t";
 
+  // Clean headers
   const headers = lines[0]
     .split(separator)
     .map(h => h.trim().replace(/\uFEFF/g, "").toLowerCase());
@@ -55,25 +58,27 @@ function parseCSVWithHeaders(text) {
 
     const values = lines[i].split(separator).map(v => v.trim());
 
+    // Header map
     const row = {};
     headers.forEach((h, idx) => {
       row[h] = values[idx] || "";
     });
 
+    // ✅ FINAL FIX: HEADER + POSITION FALLBACK
     rows.push({
       title: row["title"] || values[0] || "Untitled",
       author: row["author"] || values[1] || "N/A",
 
-      // ✅ FINAL FIX: HEADER + INDEX FALLBACK
+      // THIS is why old code worked
       issueNo:
         row["issue_no"] ||
         row["issue"] ||
-        values[2] ||
+        values[2] ||           // ← OLD LOGIC
         "N/A",
 
       doi:
         row["doi"] ||
-        values[3] ||
+        values[3] ||           // ← OLD LOGIC
         "N/A",
 
       paperFile:
