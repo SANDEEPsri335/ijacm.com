@@ -1,6 +1,5 @@
 /* ======================================================
-   IJACM – CURRENT ISSUE (HEADER-BASED CSV PARSER)
-   Every CSV row = One article card (GUARANTEED)
+   IJACM – CURRENT ISSUE (HEADER-BASED + INDEX FALLBACK)
    ====================================================== */
 
 const CSV_PATH = "/data.csv";
@@ -39,15 +38,12 @@ fetch(CSV_PATH)
   });
 
 /* ==============================
-   HEADER-BASED CSV PARSER
+   CSV PARSER (ROBUST)
 ================================ */
 function parseCSVWithHeaders(text) {
   const lines = text.trim().split(/\r?\n/);
-
-  // Detect separator: comma OR tab
   const separator = lines[0].includes(",") ? "," : "\t";
 
-  // 🔥 CLEAN + NORMALIZE HEADERS
   const headers = lines[0]
     .split(separator)
     .map(h => h.trim().replace(/\uFEFF/g, "").toLowerCase());
@@ -57,9 +53,7 @@ function parseCSVWithHeaders(text) {
   for (let i = 1; i < lines.length; i++) {
     if (!lines[i].trim()) continue;
 
-    const values = lines[i]
-      .split(separator)
-      .map(v => v.trim());
+    const values = lines[i].split(separator).map(v => v.trim());
 
     const row = {};
     headers.forEach((h, idx) => {
@@ -67,30 +61,29 @@ function parseCSVWithHeaders(text) {
     });
 
     rows.push({
-      title: row["title"] || "Untitled",
-      author: row["author"] || "N/A",
+      title: row["title"] || values[0] || "Untitled",
+      author: row["author"] || values[1] || "N/A",
 
-      // ✅ FIXED ISSUE FIELD
+      // ✅ FINAL FIX: HEADER + INDEX FALLBACK
       issueNo:
         row["issue_no"] ||
-        row["issue no"] ||
         row["issue"] ||
+        values[2] ||
         "N/A",
 
-      // ✅ FIXED DOI FIELD
       doi:
         row["doi"] ||
-        row["do i"] ||
+        values[3] ||
         "N/A",
 
       paperFile:
         row["paper_file"] ||
-        row["paper file"] ||
+        values[4] ||
         "",
 
       publishedDate:
         row["published_date"] ||
-        row["published date"] ||
+        values[5] ||
         "N/A"
     });
   }
@@ -99,7 +92,7 @@ function parseCSVWithHeaders(text) {
 }
 
 /* ==============================
-   RENDER ARTICLES
+   RENDER ARTICLES (UNCHANGED)
 ================================ */
 function renderArticles() {
   const container = document.getElementById("articles");
