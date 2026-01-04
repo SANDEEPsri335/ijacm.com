@@ -1,46 +1,72 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/data.csv") // ✅ ABSOLUTE PATH (FIXED)
+  loadArchives();
+});
+
+function loadArchives() {
+  fetch("/data.csv", { cache: "no-store" })
     .then(res => {
-      if (!res.ok) throw new Error("CSV not found");
+      if (!res.ok) throw new Error("CSV not reachable");
       return res.text();
     })
-    .then(csvText => {
-      const articles = parseCSVWithHeaders(csvText);
+    .then(text => {
+      // 🔒 Guard: Vercel returning HTML instead of CSV
+      if (text.startsWith("<!DOCTYPE") || text.startsWith("<html")) {
+        throw new Error("Received HTML instead of CSV");
+      }
+
+      const articles = parseCSVWithHeaders(text);
+
+      if (!articles.length) {
+        showError("No valid archive data found.");
+        return;
+      }
+
       initializePage(articles);
     })
     .catch(err => {
-      console.error("Error loading CSV:", err);
-      document.getElementById("volumes-container").innerHTML = `
-        <div class="empty-state">
-          <h3>Error Loading Archives</h3>
-          <p>Please try again later.</p>
-        </div>
-      `;
+      console.error("ARCHIVE LOAD ERROR:", err);
+      showError("Unable to load archive data.");
     });
-});
+}
 
-/* ======================================================
+/* ==============================
+   ERROR UI
+================================ */
+function showError(msg) {
+  const container = document.getElementById("volumes-container");
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="empty-state">
+      <h3>Error Loading Archives</h3>
+      <p>${msg}</p>
+      <small>Check console for details.</small>
+    </div>
+  `;
+}
+
+/* ==============================
    CONSTANTS
-====================================================== */
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+================================ */
+const monthNames = ["Jan","Feb","Mar","Apr","May","Jun",
+                    "Jul","Aug","Sep","Oct","Nov","Dec"];
 
-/* ======================================================
-   HEADER-BASED CSV PARSER (BULLETPROOF)
-====================================================== */
+/* ==============================
+   CSV PARSER (HEADER-BASED)
+================================ */
 function parseCSVWithHeaders(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
 
-  const separator = lines[0].includes(",") ? "," : "\t";
-  const headers = lines[0].split(separator).map(h => h.trim());
+  const sep = lines[0].includes(",") ? "," : "\t";
+  const headers = lines[0].split(sep).map(h => h.trim());
 
   const articles = [];
 
   for (let i = 1; i < lines.length; i++) {
     if (!lines[i].trim()) continue;
 
-    const values = lines[i].split(separator).map(v => v.trim());
+    const values = lines[i].split(sep).map(v => v.trim());
     const row = {};
 
     headers.forEach((h, idx) => {
@@ -52,11 +78,11 @@ function parseCSVWithHeaders(text) {
 
     articles.push({
       title: row["Title"] || "Untitled",
-      authors: row["Author"] || "Unknown Author",
+      authors: row["Author"] || "Unknown",
       issueNo: row["Issue_No"] || "N/A",
       doi: row["DOI"] || "N/A",
       paperFile: row["Paper_File"] || "",
-      publishedDateStr: row["Published_Date"],
+      publishedDate: row["Published_Date"],
       dateObj,
       year: dateObj.getFullYear(),
       month: dateObj.getMonth()
@@ -66,154 +92,83 @@ function parseCSVWithHeaders(text) {
   return articles;
 }
 
-/* ======================================================
-   DATE PARSER (DD-MMM-YY)
-====================================================== */
-function parseDate(dateStr) {
-  if (!dateStr) return null;
-
-  const parts = dateStr.split("-");
+/* ==============================
+   DATE PARSER
+================================ */
+function parseDate(str) {
+  if (!str) return null;
+  const parts = str.split("-");
   if (parts.length !== 3) return null;
 
   const day = parseInt(parts[0], 10);
-  const monthMap = {
-    jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-    jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+  const months = {
+    jan:0,feb:1,mar:2,apr:3,may:4,jun:5,
+    jul:6,aug:7,sep:8,oct:9,nov:10,dec:11
   };
 
-  const month = monthMap[parts[1].toLowerCase()];
+  const month = months[parts[1].toLowerCase()];
   let year = parseInt(parts[2], 10);
-
   if (year < 100) year += 2000;
-  if (isNaN(day) || month === undefined || isNaN(year)) return null;
 
+  if (isNaN(day) || month === undefined || isNaN(year)) return null;
   return new Date(year, month, day);
 }
 
-/* ======================================================
-   INITIALIZE PAGE
-====================================================== */
+/* ==============================
+   PAGE RENDER
+================================ */
 function initializePage(articles) {
   const container = document.getElementById("volumes-container");
-  const yearFilter = document.getElementById("year-filter");
-  const volumeFilter = document.getElementById("volume-filter");
   const statsBadge = document.getElementById("stats-badge");
 
-  if (!articles.length) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <h3>No Archives Found</h3>
-      </div>
-    `;
-    statsBadge.textContent = "0 Articles";
-    return;
-  }
+  statsBadge.textContent = `${articles.length} Articles | ${new Set(
+    articles.map(a => `${a.year}-${a.month}`)
+  ).size} Issues`;
 
-  /* ===== GROUP BY YEAR + MONTH ===== */
   const groups = {};
   articles.forEach(a => {
     const key = `${a.year}-${a.month}`;
-    if (!groups[key]) {
-      groups[key] = { articles: [] };
-    }
-    groups[key].articles.push(a);
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(a);
   });
 
-  /* ===== SORT GROUPS (OLDEST → NEWEST) ===== */
-  const sortedKeys = Object.keys(groups).sort((a, b) => {
-    const [y1, m1] = a.split("-").map(Number);
-    const [y2, m2] = b.split("-").map(Number);
-    return y1 !== y2 ? y1 - y2 : m1 - m2;
-  });
+  const keys = Object.keys(groups).sort().reverse();
+  container.innerHTML = "";
 
-  sortedKeys.forEach((key, index) => {
-    groups[key].volumeNumber = index + 1;
-    groups[key].articles.sort((a, b) => b.dateObj - a.dateObj);
-  });
+  keys.forEach((key, index) => {
+    const group = groups[key];
+    const d = group[0].dateObj;
 
-  /* ===== POPULATE FILTERS ===== */
-  [...new Set(articles.map(a => a.year))]
-    .sort((a, b) => b - a)
-    .forEach(y => {
-      yearFilter.innerHTML += `<option value="${y}">${y}</option>`;
-    });
+    const accordion = document.createElement("div");
+    accordion.className = "volume-accordion";
 
-  sortedKeys.map(k => groups[k].volumeNumber).reverse().forEach(v => {
-    volumeFilter.innerHTML += `<option value="${v}">Volume ${v}</option>`;
-  });
-
-  statsBadge.textContent = `${articles.length} Articles | ${sortedKeys.length} Issues`;
-
-  /* ======================================================
-     RENDER FUNCTION
-  ====================================================== */
-  function render(filterYear = "all", filterVol = "all") {
-    container.innerHTML = "";
-    let hasContent = false;
-
-    [...sortedKeys].reverse().forEach(key => {
-      const group = groups[key];
-      const firstDate = group.articles[0].dateObj;
-
-      const safeMonth = monthNames[firstDate.getMonth()];
-      const safeYear = firstDate.getFullYear();
-
-      if (filterYear !== "all" && safeYear.toString() !== filterYear) return;
-      if (filterVol !== "all" && group.volumeNumber.toString() !== filterVol) return;
-
-      hasContent = true;
-
-      const accordion = document.createElement("div");
-      accordion.className = "volume-accordion";
-
-      accordion.innerHTML = `
-        <button class="volume-header">
-          <span>Volume ${group.volumeNumber} Issue ${group.volumeNumber} • ${safeMonth} ${safeYear}</span>
-          <span class="volume-badge">${group.articles.length} Articles</span>
-        </button>
-
-        <div class="volume-content">
-          <div class="articles-grid">
-            ${group.articles.map(article => `
-              <div class="article-card">
-                <h4>${article.title}</h4>
-                <div class="article-authors">${article.authors}</div>
-                <div class="article-meta">
-                  <span>${article.publishedDateStr}</span>
-                  <span>${article.doi}</span>
-                </div>
-                <div class="article-actions">
-                  ${article.paperFile
-                    ? `<a href="/paper/${article.paperFile}" target="_blank" class="btn-view">
-                         View Paper
-                       </a>`
-                    : `<span class="text-muted">Paper N/A</span>`
-                  }
-                </div>
-              </div>
-            `).join("")}
-          </div>
+    accordion.innerHTML = `
+      <button class="volume-header">
+        <span>Volume ${index + 1} • ${monthNames[d.getMonth()]} ${d.getFullYear()}</span>
+        <span class="volume-badge">${group.length} Articles</span>
+      </button>
+      <div class="volume-content">
+        <div class="articles-grid">
+          ${group.map(a => `
+            <div class="article-card">
+              <h4>${a.title}</h4>
+              <div>${a.authors}</div>
+              <div>${a.publishedDate}</div>
+              ${
+                a.paperFile
+                  ? `<a href="/paper/${a.paperFile}" target="_blank">View Paper</a>`
+                  : `<span>Paper N/A</span>`
+              }
+            </div>
+          `).join("")}
         </div>
-      `;
+      </div>
+    `;
 
-      container.appendChild(accordion);
+    accordion.querySelector(".volume-header").onclick = () => {
+      accordion.classList.toggle("active");
+    };
 
-      accordion.querySelector(".volume-header").onclick = () => {
-        accordion.classList.toggle("active");
-      };
-    });
-
-    if (!hasContent) {
-      container.innerHTML = `
-        <div class="empty-state">
-          <h3>No Matches</h3>
-          <p>Try adjusting filters.</p>
-        </div>
-      `;
-    }
-  }
-
-  render();
-  yearFilter.onchange = e => render(e.target.value, volumeFilter.value);
-  volumeFilter.onchange = e => render(yearFilter.value, e.target.value);
+    container.appendChild(accordion);
+  });
 }
