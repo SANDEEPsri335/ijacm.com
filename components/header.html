@@ -1,0 +1,93 @@
+<style>
+    /* ================= HEADER ================= */
+    .header {
+        height: 130px;
+        display: flex;
+        padding: 10px 40px;
+        align-items: center;
+        background: var(--bg-dark);
+        justify-content: space-between;
+    }
+
+    .logo img {
+        height: 110px;
+        width: auto;
+        filter: drop-shadow(0 0 10px rgba(0, 188, 212, 0.6));
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .logo img:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 16px rgba(0, 188, 212, 1));
+    }
+
+    .title {
+        flex: 1;
+        text-align: center;
+    }
+
+    .title h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: white;
+        /* Ensure text is visible */
+    }
+
+    .title span {
+        color: var(--secondary);
+    }
+
+    /* SUBMIT BUTTON IN HEADER */
+    .submit-btn a {
+        background: var(--secondary);
+        color: var(--bg-darker);
+        padding: 12px 18px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: var(--shadow-glow);
+        white-space: nowrap;
+    }
+
+    .submit-btn a:hover {
+        background: #40c4ff;
+    }
+
+    /* Responsive Header */
+    @media (max-width: 900px) {
+        .header {
+            flex-direction: column;
+            height: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .title {
+            margin: 15px 0;
+        }
+    }
+</style>
+<header class="header">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="assets/logo.png" alt="Scholar Sphere Publications Logo">
+        </a>
+    </div>
+
+    <div class="title">
+        <h1>
+            International Journal of Advanced Computing and Mechanical Systems
+            <span>(IJACM)</span>
+        </h1>
+    </div>
+
+    <div class="submit-btn">
+        <a href="pages/submit.html">
+            Submit Paper
+        </a>
+    </div>
+</header>

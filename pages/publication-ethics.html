@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publication Ethics - IJACM</title>
+  <meta name="keywords"
+    content="publication ethics, research integrity, COPE, authorship, peer review, conflict of interest, academic publishing">
+  <meta name="description"
+    content="IJACM's comprehensive Publication Ethics and Malpractice Statement following COPE guidelines.">
+
+  <!-- MAIN SITE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    main {
+      padding: 30px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= PAGE LAYOUT ================= */
+    .ethics-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .ethics-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 40px 30px;
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ethics-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--secondary), var(--accent));
+    }
+
+    .ethics-title {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 3s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% {
+        text-shadow: 0 0 5px rgba(0, 176, 255, 0.3);
+      }
+
+      100% {
+        text-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+      }
+    }
+
+    .ethics-subtitle {
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ================= SECTION STYLES ================= */
+    .section-card {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      margin-bottom: 35px;
+      padding: 35px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 176, 255, 0.2);
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-yellow), var(--secondary));
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 26px;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      background: linear-gradient(90deg, var(--accent-yellow), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-content {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    .section-content p {
+      margin-bottom: 20px;
+    }
+
+    /* ================= RESPONSIBILITY GRID ================= */
+    .responsibility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .responsibility-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      border-left: 4px solid;
+      transition: all var(--transition-normal);
+    }
+
+    .responsibility-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .responsibility-card.author {
+      border-left-color: var(--secondary);
+    }
+
+    .responsibility-card.editor {
+      border-left-color: var(--accent);
+    }
+
+    .responsibility-card.reviewer {
+      border-left-color: var(--accent-yellow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 18px;
+      color: var(--white);
+    }
+
+    .author .card-icon {
+      background: var(--secondary);
+    }
+
+    .editor .card-icon {
+      background: var(--accent);
+    }
+
+    .reviewer .card-icon {
+      background: var(--accent-yellow);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .responsibility-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .responsibility-list li {
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .responsibility-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-yellow);
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* ================= INVESTIGATION PROCESS ================= */
+    .process-container {
+      background: rgba(255, 64, 129, 0.05);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 30px 0;
+      border-left: 5px solid var(--accent);
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 64, 129, 0.2);
+    }
+
+    .process-step:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .process-content h4 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .process-content p {
+      color: var(--text-muted);
+    }
+
+    /* ================= CORRECTION TYPES ================= */
+    .correction-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .correction-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      text-align: center;
+      border-top: 4px solid;
+      transition: all var(--transition-normal);
+    }
+
+    .correction-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .correction-card.erratum {
+      border-top-color: var(--secondary);
+    }
+
+    .correction-card.corrigendum {
+      border-top-color: var(--accent-yellow);
+    }
+
+    .correction-card.retraction {
+      border-top-color: var(--accent);
+    }
+
+    .correction-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    .erratum .correction-icon {
+      background: var(--secondary);
+    }
+
+    .corrigendum .correction-icon {
+      background: var(--accent-yellow);
+    }
+
+    .retraction .correction-icon {
+      background: var(--accent);
+    }
+
+    .correction-card h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+
+    .correction-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ================= COPE BADGE ================= */
+    .cope-badge {
+      background: rgba(0, 176, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+      border: 2px solid var(--secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cope-badge::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%2300b0ff" opacity="0.05" d="M30,30 Q50,10 70,30 T90,50 Q70,70 50,90 T30,70 Q10,50 30,30Z"/></svg>');
+      background-size: 200px;
+    }
+
+    .cope-logo {
+      width: 100px;
+      height: 100px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 40px;
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cope-badge h3 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .cope-badge p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ================= DOCUMENT TEMPLATES ================= */
+    /* REMOVED TEMPLATE SECTIONS */
+
+    /* ================= RESPONSIVE STYLES ================= */
+    @media (max-width: 992px) {
+      .ethics-title {
+        font-size: 36px;
+      }
+
+      .section-card {
+        padding: 25px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .responsibility-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ethics-title {
+        font-size: 32px;
+      }
+
+      .ethics-header {
+        padding: 30px 20px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .correction-types {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ethics-title {
+        font-size: 28px;
+      }
+
+      .ethics-subtitle {
+        font-size: 16px;
+      }
+
+      .section-card {
+        padding: 20px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+
+      .process-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <div id="header-placeholder"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <div class="ethics-container">
+      <div class="ethics-header fade-in">
+        <h1 class="ethics-title">Publication Ethics & Malpractice Statement</h1>
+        <p class="ethics-subtitle">
+          The International Journal of Advanced Computing and Mechanical Systems (IJACM) is committed to upholding the
+          highest standards of publication ethics and takes all possible measures against publication malpractice.
+        </p>
+      </div>
+
+      <!-- 1. Responsibilities of Authors -->
+      <section class="section-card fade-in">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-user-edit"></i>
+          </div>
+          <h2 class="section-title">1. Responsibilities of Authors</h2>
+        </div>
+        <div class="section-content">
+          <p>Authors submitting to <strong>IJACM</strong> must ensure that:</p>
+
+          <div class="responsibility-grid">
+            <div class="responsibility-card author">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-feather-alt"></i>
+                </div>
+                <h3 class="card-title">Originality</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>The work is entirely original</li>
+                <li>Proper citation for others' work</li>
+                <li>No plagiarism of any kind</li>
+                <li>No duplicate submission</li>
+              </ul>
+            </div>
+
+            <div class="responsibility-card author">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h3 class="card-title">Data Access</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Provide raw data for editorial review</li>
+                <li>Be prepared for public data access</li>
+                <li>Maintain data integrity</li>
+                <li>Preserve data for reasonable period</li>
+              </ul>
+            </div>
+
+            <div class="responsibility-card author">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="card-title">Authorship</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Significant contribution requirement</li>
+                <li>All authors approve final version</li>
+                <li>Proper acknowledgment of contributors</li>
+                <li>Disclosure of conflicts of interest</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <p><strong>Fundamental Errors:</strong> If an author discovers a significant error in their published work,
+              it is their obligation to promptly notify the journal editor to retract or correct the paper.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Responsibilities of Editors -->
+      <section class="section-card fade-in" style="animation-delay: 0.1s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h2 class="section-title">2. Responsibilities of Editors</h2>
+        </div>
+        <div class="section-content">
+          <p>The editorial team at <strong>IJACM</strong> is committed to:</p>
+
+          <div class="responsibility-grid">
+            <div class="responsibility-card editor">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3 class="card-title">Independence</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Decisions based solely on merit</li>
+                <li>No discrimination of any kind</li>
+                <li>Transparent evaluation criteria</li>
+                <li>No influence from external parties</li>
+              </ul>
+            </div>
+
+            <div class="responsibility-card editor">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="card-title">Confidentiality</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Protect author identities</li>
+                <li>Secure manuscript handling</li>
+                <li>Limited disclosure to involved parties</li>
+                <li>Secure data management</li>
+              </ul>
+            </div>
+
+            <div class="responsibility-card editor">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="card-title">Conflict Resolution</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Responsive to ethical complaints</li>
+                <li>Fair investigation process</li>
+                <li>Transparent communication</li>
+                <li>Appropriate corrective actions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Handling Allegations of Misconduct -->
+      <section class="section-card fade-in" style="animation-delay: 0.2s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-gavel"></i>
+          </div>
+          <h2 class="section-title">3. Handling Allegations of Misconduct</h2>
+        </div>
+        <div class="section-content">
+          <p><strong>IJACM</strong> takes all allegations of misconduct seriously. We follow the COPE flowcharts for
+            systematic investigation of suspected cases.</p>
+
+          <div class="process-container">
+            <h3 style="color: var(--accent); margin-bottom: 25px; font-size: 22px;">Investigation Process:</h3>
+
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div class="process-content">
+                <h4>Initial Assessment</h4>
+                <p>The Editor-in-Chief reviews the evidence of suspected misconduct (e.g., plagiarism report or data
+                  inconsistencies).</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="process-content">
+                <h4>Author Notification</h4>
+                <p>The author is contacted and given an opportunity to respond to the allegations within a specified
+                  timeframe.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="process-content">
+                <h4>Formal Inquiry</h4>
+                <p>If the response is unsatisfactory, a committee may be formed, or the author's institution may be
+                  notified for further investigation.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div class="process-content">
+                <h4>Action</h4>
+                <p>Depending on the severity, actions include a formal warning, rejection of the manuscript, or a formal
+                  <strong>Retraction Notice</strong> if the article is already published.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Conflict of Interest -->
+      <section class="section-card fade-in" style="animation-delay: 0.3s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h2 class="section-title">4. Conflict of Interest</h2>
+        </div>
+        <div class="section-content">
+          <p>All participants in the peer-review and publication process—including authors, editors, and reviewers—must
+            consider their conflicts of interest when fulfilling their roles.</p>
+
+          <div class="responsibility-grid">
+            <div class="responsibility-card author">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-file-signature"></i>
+                </div>
+                <h3 class="card-title">Authors</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Declare any financial relationships</li>
+                <li>Disclose personal relationships</li>
+                <li>Reveal institutional affiliations</li>
+                <li>Disclose funding sources</li>
+              </ul>
+            </div>
+
+            <div class="responsibility-card reviewer">
+              <div class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-user-check"></i>
+                </div>
+                <h3 class="card-title">Reviewers</h3>
+              </div>
+              <ul class="responsibility-list">
+                <li>Decline if competitive relationships exist</li>
+                <li>Avoid collaborative conflicts</li>
+                <li>Disclose any potential bias</li>
+                <li>Maintain professional distance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Post-Publication Corrections -->
+      <section class="section-card fade-in" style="animation-delay: 0.4s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-edit"></i>
+          </div>
+          <h2 class="section-title">5. Post-Publication Corrections</h2>
+        </div>
+        <div class="section-content">
+          <p>The journal recognizes that the published record is not always perfect. We allow for:</p>
+
+          <div class="correction-types">
+            <div class="correction-card erratum">
+              <div class="correction-icon">
+                <i class="fas fa-newspaper"></i>
+              </div>
+              <h4>Errata</h4>
+              <p>Corrections for errors introduced by the journal during publication process</p>
+            </div>
+
+            <div class="correction-card corrigendum">
+              <div class="correction-icon">
+                <i class="fas fa-pen"></i>
+              </div>
+              <h4>Corrigenda</h4>
+              <p>Corrections for errors introduced by the authors in the original manuscript</p>
+            </div>
+
+            <div class="correction-card retraction">
+              <div class="correction-icon">
+                <i class="fas fa-times-circle"></i>
+              </div>
+              <h4>Retractions</h4>
+              <p>Formal withdrawal in cases of invalid results, ethical violations, or proven misconduct</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COPE Compliance -->
+      <div class="cope-badge fade-in" style="animation-delay: 0.5s;">
+        <div class="cope-logo">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>COPE Compliant</h3>
+        <p>IJACM follows the guidelines and standards set by the <strong>Committee on Publication Ethics
+            (COPE)</strong>. Our policies and procedures align with COPE's best practice recommendations for journal
+          editors.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add fade-in animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections for animation
+      const sections = document.querySelectorAll('.section-card, .cope-badge');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+
+</html>

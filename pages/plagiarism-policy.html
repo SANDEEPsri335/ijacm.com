@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plagiarism Policy - IJACM</title>
+  <meta name="keywords"
+    content="plagiarism policy, academic integrity, research ethics, self-plagiarism, similarity check, COPE guidelines">
+  <meta name="description"
+    content="IJACM's comprehensive Plagiarism Policy for maintaining academic integrity and originality in research publications.">
+
+  <!-- MAIN SITE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    main {
+      padding: 30px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= PAGE LAYOUT ================= */
+    .plagiarism-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .plagiarism-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 40px 30px;
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plagiarism-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--danger), var(--warning), var(--secondary));
+    }
+
+    .plagiarism-title {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--danger), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 3s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% {
+        text-shadow: 0 0 5px rgba(244, 67, 54, 0.3);
+      }
+
+      100% {
+        text-shadow: 0 0 15px rgba(0, 176, 255, 0.4);
+      }
+    }
+
+    .plagiarism-subtitle {
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ================= SECTION STYLES ================= */
+    .policy-section {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      margin-bottom: 35px;
+      padding: 35px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+
+    .policy-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 176, 255, 0.2);
+    }
+
+    .policy-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-yellow), var(--secondary));
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 26px;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      background: linear-gradient(90deg, var(--accent-yellow), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-content {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    .section-content p {
+      margin-bottom: 20px;
+    }
+
+    /* ================= PLAGIARISM TYPES GRID ================= */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .type-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      border-top: 4px solid;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .type-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .type-card.direct {
+      border-top-color: var(--danger);
+    }
+
+    .type-card.paraphrasing {
+      border-top-color: var(--warning);
+    }
+
+    .type-card.self {
+      border-top-color: var(--secondary);
+    }
+
+    .type-card.mosaic {
+      border-top-color: var(--accent);
+    }
+
+    .type-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: var(--white);
+    }
+
+    .direct .type-icon {
+      background: var(--danger);
+    }
+
+    .paraphrasing .type-icon {
+      background: var(--warning);
+    }
+
+    .self .type-icon {
+      background: var(--secondary);
+    }
+
+    .mosaic .type-icon {
+      background: var(--accent);
+    }
+
+    .type-card h4 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: var(--text-light);
+    }
+
+    .type-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .type-example {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid;
+      margin-top: 10px;
+    }
+
+    .direct .type-example {
+      border-left-color: var(--danger);
+    }
+
+    .paraphrasing .type-example {
+      border-left-color: var(--warning);
+    }
+
+    .self .type-example {
+      border-left-color: var(--secondary);
+    }
+
+    .mosaic .type-example {
+      border-left-color: var(--accent);
+    }
+
+    /* ================= SIMILARITY FRAMEWORK ================= */
+    .similarity-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .similarity-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .similarity-level {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, 0.2);
+      transition: all var(--transition-normal);
+    }
+
+    .similarity-level:hover {
+      transform: translateX(10px);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .level-indicator {
+      width: 20px;
+      height: 60px;
+      margin-right: 20px;
+      border-radius: var(--radius-sm);
+    }
+
+    .level-indicator.low {
+      background: var(--success);
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    }
+
+    .level-indicator.medium {
+      background: var(--warning);
+      box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+    }
+
+    .level-indicator.high {
+      background: var(--danger);
+      box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+    }
+
+    .level-content {
+      flex: 1;
+    }
+
+    .level-content h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: var(--text-light);
+    }
+
+    .level-content p {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .level-range {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-light);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    /* ================= SCREENING PROCESS ================= */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--secondary);
+      transition: all var(--transition-normal);
+    }
+
+    .process-step:hover {
+      transform: translateX(10px);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .step-content p {
+      color: var(--text-muted);
+    }
+
+    /* ================= CONSEQUENCES SECTION ================= */
+    .consequences-container {
+      background: rgba(244, 67, 54, 0.1);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 30px 0;
+      border-left: 5px solid var(--danger);
+    }
+
+    .consequence-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid rgba(244, 67, 54, 0.2);
+    }
+
+    .consequence-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .consequence-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(244, 67, 54, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+      color: var(--danger);
+    }
+
+    .consequence-content h4 {
+      color: var(--danger);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .consequence-content p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* ================= GUIDELINES SECTION ================= */
+    .guidelines-container {
+      background: rgba(76, 175, 80, 0.1);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 30px 0;
+      border-left: 5px solid var(--success);
+    }
+
+    .guideline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-normal);
+    }
+
+    .guideline-item:hover {
+      transform: translateX(10px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .guideline-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(76, 175, 80, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+      color: var(--success);
+    }
+
+    .guideline-content h4 {
+      color: var(--success);
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .guideline-content p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* ================= COPE COMPLIANCE ================= */
+    .cope-compliance {
+      background: rgba(0, 176, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+      border: 2px solid var(--secondary);
+    }
+
+    .cope-compliance h3 {
+      color: var(--secondary);
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .cope-compliance p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ================= RESPONSIVE STYLES ================= */
+    @media (max-width: 992px) {
+      .plagiarism-title {
+        font-size: 36px;
+      }
+
+      .policy-section {
+        padding: 25px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .types-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .plagiarism-title {
+        font-size: 32px;
+      }
+
+      .plagiarism-header {
+        padding: 30px 20px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .types-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .similarity-level {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .level-indicator {
+        width: 60px;
+        height: 20px;
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .level-range {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .process-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .consequence-item,
+      .guideline-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .consequence-icon,
+      .guideline-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .plagiarism-title {
+        font-size: 28px;
+      }
+
+      .plagiarism-subtitle {
+        font-size: 16px;
+      }
+
+      .policy-section {
+        padding: 20px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <div id="header-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <div class="plagiarism-container">
+      <div class="plagiarism-header fade-in">
+        <h1 class="plagiarism-title">Plagiarism Policy</h1>
+        <p class="plagiarism-subtitle">
+          Maintaining academic integrity through strict originality standards and comprehensive similarity assessment
+        </p>
+      </div>
+
+      <!-- Definition of Plagiarism -->
+      <section class="policy-section fade-in">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h2 class="section-title">Definition of Plagiarism</h2>
+        </div>
+        <div class="section-content">
+          <p>At <strong>IJACM</strong>, plagiarism is defined as the unreferenced use of others' published and
+            unpublished ideas, data, or words. This includes, but is not limited to:</p>
+
+          <div class="types-grid">
+            <div class="type-card direct">
+              <div class="type-icon">
+                <i class="fas fa-copy"></i>
+              </div>
+              <h4>Direct Copy-Paste</h4>
+              <p>Using portions of another author's work word-for-word without quotation marks or attribution.</p>
+              <div class="type-example">
+                <strong>Example:</strong> Copying paragraphs from a published paper without quotation marks or citation.
+              </div>
+            </div>
+
+            <div class="type-card paraphrasing">
+              <div class="type-icon">
+                <i class="fas fa-paragraph"></i>
+              </div>
+              <h4>Paraphrasing without Citation</h4>
+              <p>Summarizing or rephrasing an idea from another source without giving credit.</p>
+              <div class="type-example">
+                <strong>Example:</strong> Rewriting someone else's research findings in your own words without
+                acknowledging the source.
+              </div>
+            </div>
+
+            <div class="type-card self">
+              <div class="type-icon">
+                <i class="fas fa-recycle"></i>
+              </div>
+              <h4>Self-Plagiarism (Text Recycling)</h4>
+              <p>Reusing significant portions of one's own previously published work without proper citation or
+                disclosure.</p>
+              <div class="type-example">
+                <strong>Example:</strong> Reusing methods section from your previous publication without citation.
+              </div>
+            </div>
+
+            <div class="type-card mosaic">
+              <div class="type-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <h4>Mosaic Plagiarism</h4>
+              <p>Patching together text from various sources to create a new document without original contribution.</p>
+              <div class="type-example">
+                <strong>Example:</strong> Combining phrases from multiple papers to create a "new" literature review.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Similarity Assessment Framework -->
+      <section class="policy-section fade-in" style="animation-delay: 0.1s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h2 class="section-title">Similarity Assessment Framework</h2>
+        </div>
+        <div class="section-content">
+          <p>While we maintain a strict <strong>15% threshold</strong>, the editorial team evaluates the
+            Turnitin/iThenticate report qualitatively.</p>
+
+          <div class="similarity-container">
+            <h3 style="color: var(--secondary); margin-bottom: 25px; font-size: 22px;">Similarity Level Assessment:</h3>
+
+            <div class="similarity-scale">
+              <div class="similarity-level">
+                <div class="level-indicator low"></div>
+                <div class="level-content">
+                  <h4>Below 15% Similarity</h4>
+                  <p>Manuscript proceeds to editorial screening, provided no single source accounts for a significant
+                    block of text.</p>
+                </div>
+                <div class="level-range">&lt; 15%</div>
+              </div>
+
+              <div class="similarity-level">
+                <div class="level-indicator medium"></div>
+                <div class="level-content">
+                  <h4>15% – 30% Similarity</h4>
+                  <p>Manuscript is returned to authors for "Major Revision" to improve paraphrasing and citation
+                    practices.</p>
+                </div>
+                <div class="level-range">15–30%</div>
+              </div>
+
+              <div class="similarity-level">
+                <div class="level-indicator high"></div>
+                <div class="level-content">
+                  <h4>Above 30% Similarity</h4>
+                  <p>Desk Rejection. The manuscript is rejected without review due to insufficient originality.</p>
+                </div>
+                <div class="level-range">&gt; 30%</div>
+              </div>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 20px;">
+              <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+              <strong>Note:</strong> Common technical terminology and standard methodology descriptions are typically
+              excluded from similarity calculations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Screening Process -->
+      <section class="policy-section fade-in" style="animation-delay: 0.2s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h2 class="section-title">The Screening Process</h2>
+        </div>
+        <div class="section-content">
+          <p>Every manuscript undergoes a rigorous three-stage plagiarism screening process:</p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Initial Submission</h4>
+                <p>Upon receipt, every manuscript is automatically run through plagiarism detection software
+                  (Turnitin/iThenticate) to generate a similarity report.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Editorial Review of Report</h4>
+                <p>A human editor reviews the report to distinguish between common technical terminology (which is often
+                  flagged) and actual intellectual theft. The editor assesses context and intent.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Cross-Check Verification</h4>
+                <p>We verify that references and citations are correctly formatted and that all quoted material is
+                  within "fair use" limits. Properly cited material is excluded from similarity calculations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Consequences of Plagiarism -->
+      <section class="policy-section fade-in" style="animation-delay: 0.3s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-gavel"></i>
+          </div>
+          <h2 class="section-title">Consequences of Plagiarism</h2>
+        </div>
+        <div class="section-content">
+          <p>If plagiarism is detected after publication, IJACM will conduct an investigation in accordance with COPE
+            (Committee on Publication Ethics) guidelines. Confirmed cases will result in:</p>
+
+          <div class="consequences-container">
+            <div class="consequence-item">
+              <div class="consequence-icon">
+                <i class="fas fa-times-circle"></i>
+              </div>
+              <div class="consequence-content">
+                <h4>Formal Retraction Notice</h4>
+                <p>A formal Notice of Retraction published in the next issue and linked to the online version of the
+                  article, clearly stating the reason for retraction.</p>
+              </div>
+            </div>
+
+            <div class="consequence-item">
+              <div class="consequence-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="consequence-content">
+                <h4>Institutional Notification</h4>
+                <p>Notification of the author's department head or institutional ethics committee regarding the ethical
+                  violation and its consequences.</p>
+              </div>
+            </div>
+
+            <div class="consequence-item">
+              <div class="consequence-icon">
+                <i class="fas fa-ban"></i>
+              </div>
+              <div class="consequence-content">
+                <h4>Publishing Ban</h4>
+                <p>A potential publishing ban for the authors involved for a period of 1–3 years, depending on the
+                  severity of the plagiarism.</p>
+              </div>
+            </div>
+          </div>
+
+          <p style="color: var(--text-muted); font-size: 15px; margin-top: 20px;">
+            <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+            <strong>Serious Cases:</strong> For severe or repeated violations, authors may be permanently banned from
+            submitting to IJACM, and the case may be reported to academic databases and indexing services.
+          </p>
+        </div>
+      </section>
+
+      <!-- Guidelines for Authors -->
+      <section class="policy-section fade-in" style="animation-delay: 0.4s;">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h2 class="section-title">Guidelines for Authors to Avoid Plagiarism</h2>
+        </div>
+        <div class="section-content">
+          <p>Follow these guidelines to ensure your manuscript meets IJACM's originality standards:</p>
+
+          <div class="guidelines-container">
+            <div class="guideline-item">
+              <div class="guideline-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+              <div class="guideline-content">
+                <h4>Always Cite</h4>
+                <p>Even when discussing common knowledge in highly specialized fields, it is safer to cite the
+                  foundational paper or standard reference.</p>
+              </div>
+            </div>
+
+            <div class="guideline-item">
+              <div class="guideline-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <div class="guideline-content">
+                <h4>Use Quotation Marks</h4>
+                <p>Any verbatim text longer than a few words must be enclosed in quotes and cited with page numbers from
+                  the original source.</p>
+              </div>
+            </div>
+
+            <div class="guideline-item">
+              <div class="guideline-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="guideline-content">
+                <h4>Check Your Own Work</h4>
+                <p>We strongly recommend authors run their manuscripts through a plagiarism checker before submission to
+                  identify potential issues.</p>
+              </div>
+            </div>
+
+            <div class="guideline-item">
+              <div class="guideline-icon">
+                <i class="fas fa-clipboard-check"></i>
+              </div>
+              <div class="guideline-content">
+                <h4>Disclose Prior Publication</h4>
+                <p>If reusing your own previously published material, clearly disclose this to the editor and provide
+                  proper citation to the original work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COPE Compliance -->
+      <div class="cope-compliance fade-in" style="animation-delay: 0.5s;">
+        <h3><i class="fas fa-shield-alt"></i> COPE Compliance</h3>
+        <p>IJACM strictly follows the guidelines established by the Committee on Publication Ethics (COPE) for handling
+          plagiarism and other publication ethics issues. Our procedures align with COPE's flowcharts for plagiarism
+          investigation and resolution.</p>
+        <p style="font-size: 15px; color: var(--text-muted); margin-top: 15px;">
+          <i class="fas fa-external-link-alt"></i>
+          Learn more about COPE guidelines at: <a href="https://publicationethics.org" target="_blank"
+            style="color: var(--secondary); text-decoration: underline;">publicationethics.org</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-placeholder"></div>
+
+  <!-- SITE SCRIPT -->
+  <script src="../script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add fade-in animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections for animation
+      const sections = document.querySelectorAll('.policy-section, .cope-compliance');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Add hover effect to similarity levels
+      const similarityLevels = document.querySelectorAll('.similarity-level');
+      similarityLevels.forEach(level => {
+        level.addEventListener('mouseenter', function () {
+          const indicator = this.querySelector('.level-indicator');
+          indicator.style.transform = 'scale(1.1)';
+        });
+
+        level.addEventListener('mouseleave', function () {
+          const indicator = this.querySelector('.level-indicator');
+          indicator.style.transform = 'scale(1)';
+        });
+      });
+
+      // Add click effect to type cards
+      const typeCards = document.querySelectorAll('.type-card');
+      typeCards.forEach(card => {
+        card.addEventListener('click', function () {
+          this.style.transform = 'translateY(-5px) scale(1.02)';
+          setTimeout(() => {
+            this.style.transform = 'translateY(-5px) scale(1)';
+          }, 150);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

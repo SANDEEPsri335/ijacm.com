@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editorial Board - IJACM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords"
+    content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+  <meta name="description"
+    content="Meet the editorial board members of IJACM with their LinkedIn profiles and contact information.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --accent-green: #4caf50;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-linkedin: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+      --gradient-email: linear-gradient(135deg, #d44638 0%, #ea4335 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    main {
+      padding: 40px 20px;
+      min-height: 500px;
+    }
+
+    /* ================= PAGE SPECIFIC STYLES ================= */
+    .editorial-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .page-title-center {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .page-title-center h2 {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-title-center h2::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    .page-title-center p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Main Container Layout */
+    .board-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    /* Role Section Cards */
+    .role-section {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-section:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 176, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .role-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(0, 176, 255, 0.05) 0%, rgba(0, 176, 255, 0) 70%);
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+    }
+
+    .role-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .role-title {
+      font-size: 1.6rem;
+      color: var(--secondary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-title i {
+      font-size: 1.4rem;
+      color: var(--accent-yellow);
+    }
+
+    .editors-count {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Editor Cards Grid */
+    .editors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 25px;
+    }
+
+    /* Editor Card - FIXED NO BLINKING */
+    .editor-card {
+      background: rgba(13, 27, 42, 0.8);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .editor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(0, 176, 255, 0.2);
+    }
+
+    .editor-photo {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+      position: relative;
+      z-index: 1;
+      /* Fixed z-index to prevent stacking issues */
+    }
+
+    .editor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 176, 255, 0.2);
+      box-shadow: var(--shadow-sm);
+      display: block;
+      /* Ensure proper block display */
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    /* REMOVED the problematic ::after pseudo-element that was causing blinking */
+    /* .editor-photo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 176, 255, 0.2) 0%, rgba(0, 176, 255, 0) 70%);
+      z-index: 1;
+    } */
+
+    .editor-info {
+      flex: 1;
+    }
+
+    .editor-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .editor-title {
+      font-size: 0.9rem;
+      color: var(--accent-yellow);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .editor-affiliation {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .editor-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .editor-location i {
+      color: var(--accent);
+    }
+
+    /* Social Links - Only LinkedIn and Email */
+    .editor-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+
+    .social-link i {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* LinkedIn Button */
+    .social-link.linkedin {
+      background: var(--gradient-linkedin);
+      box-shadow: 0 4px 8px rgba(0, 119, 181, 0.2);
+    }
+
+    .social-link.linkedin:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 119, 181, 0.3);
+    }
+
+    /* Email Button */
+    .social-link.email {
+      background: var(--gradient-email);
+      box-shadow: 0 4px 8px rgba(212, 70, 56, 0.2);
+    }
+
+    .social-link.email:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(212, 70, 56, 0.3);
+    }
+
+    /* Tooltip */
+    .social-tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .social-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+    }
+
+    .social-link:hover .social-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Disclaimer Note */
+    .editor-note {
+      margin-top: 60px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      line-height: 1.6;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .editor-note i {
+      font-size: 1.2rem;
+      color: var(--accent-yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ================= RESPONSIVE STYLES ================= */
+    @media (max-width: 992px) {
+      .editors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .editor-photo {
+        width: 120px;
+        height: 120px;
+      }
+
+      .editor-social {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-title-center h2 {
+        font-size: 2.2rem;
+      }
+
+      .role-section {
+        padding: 20px;
+      }
+
+      .role-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .editor-name {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title-center h2 {
+        font-size: 1.8rem;
+      }
+
+      .editor-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      .editor-note {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .editor-note i {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="editorial-wrapper">
+      <div class="page-title-center">
+        <h2>Editorial Board</h2>
+        <p>Meet our distinguished editorial team of leading experts in advanced computing and mechanical systems</p>
+      </div>
+
+      <div class="board-container">
+
+        <!-- Editor-in-Chief -->
+        <div class="role-section">
+          <div class="role-header">
+            <div class="role-title">
+              <i class="fas fa-crown"></i>
+              <span>Editor-in-Chief</span>
+            </div>
+            <div class="editors-count">1 Member</div>
+          </div>
+
+          <div class="editors-grid">
+            <div class="editor-card">
+              <div class="editor-photo">
+                <img src="../assets/editors/kapoor.jpg" alt="Pr. S. Kapoor"
+                  onerror="this.src='../assets/editors/default.jpg'" loading="lazy">
+              </div>
+              <div class="editor-info">
+                <div class="editor-name">
+                  Pr. S. Kapoor
+                  <span class="editor-title">Professor & Director</span>
+                </div>
+                <div class="editor-affiliation">
+                  Department of Mechanical Science and Engineering, University of Illinois Urbana-Champaign
+                </div>
+                <div class="editor-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Urbana, Illinois, United States
+                </div>
+                <div class="editor-social">
+                  <a href="https://www.linkedin.com/in/s-kapoor-illinois" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="social-tooltip">LinkedIn Profile</span>
+                  </a>
+                  <a href="mailto:skapoor@illinois.edu" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">skapoor@illinois.edu</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Area Editors -->
+        <div class="role-section">
+          <div class="role-header">
+            <div class="role-title">
+              <i class="fas fa-users-gear"></i>
+              <span>Area Editors</span>
+            </div>
+            <div class="editors-count">2 Members</div>
+          </div>
+
+          <div class="editors-grid">
+
+            <!-- Editor 1 -->
+            <div class="editor-card">
+              <div class="editor-photo">
+                <img src="../assets/editors/default.jpg" alt="Dr. M. B. Jun" loading="lazy">
+              </div>
+              <div class="editor-info">
+                <div class="editor-name">
+                  Dr. M. B. Jun
+                  <span class="editor-title">Associate Professor</span>
+                </div>
+                <div class="editor-affiliation">
+                  School of Mechanical Engineering, Purdue University
+                </div>
+                <div class="editor-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  West Lafayette, Indiana, United States
+                </div>
+                <div class="editor-social">
+                  <a href="https://www.linkedin.com/in/mbjun-purdue" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="social-tooltip">LinkedIn Profile</span>
+                  </a>
+                  <a href="mailto:mbjun@purdue.edu" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">mbjun@purdue.edu</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editor 2 -->
+            <div class="editor-card">
+              <div class="editor-photo">
+                <img src="../assets/editors/default.jpg" alt="Dr. Y. Zhang" loading="lazy">
+              </div>
+              <div class="editor-info">
+                <div class="editor-name">
+                  Dr. Y. Zhang
+                  <span class="editor-title">Professor of Mechanical Engineering</span>
+                </div>
+                <div class="editor-affiliation">
+                  Department of Mechanical and Aerospace Engineering, University of Kentucky
+                </div>
+                <div class="editor-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Lexington, Kentucky, United States
+                </div>
+                <div class="editor-social">
+                  <a href="https://www.linkedin.com/in/yzhang-uky" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="social-tooltip">LinkedIn Profile</span>
+                  </a>
+                  <a href="mailto:yzhang@uky.edu" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">yzhang@uky.edu</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Associate Editors -->
+        <div class="role-section">
+          <div class="role-header">
+            <div class="role-title">
+              <i class="fas fa-user-tie"></i>
+              <span>Associate Editors</span>
+            </div>
+            <div class="editors-count">2 Members</div>
+          </div>
+
+          <div class="editors-grid">
+            <!-- Editor 1 -->
+            <div class="editor-card">
+              <div class="editor-photo">
+                <img src="../assets/editors/annoni.jpg" alt="M. Annoni, MSME"
+                  onerror="this.src='../assets/editors/default.jpg'" loading="lazy">
+              </div>
+              <div class="editor-info">
+                <div class="editor-name">
+                  M. Annoni, MSME
+                  <span class="editor-title">Senior Researcher</span>
+                </div>
+                <div class="editor-affiliation">
+                  Department of Mechanical Engineering, Polytechnic University of Milan
+                </div>
+                <div class="editor-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Milano, Italy
+                </div>
+                <div class="editor-social">
+                  <a href="https://www.linkedin.com/in/m-annoni-polimi" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="social-tooltip">LinkedIn Profile</span>
+                  </a>
+                  <a href="mailto:m.annoni@polimi.it" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">m.annoni@polimi.it</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Editor 2 -->
+            <div class="editor-card">
+              <div class="editor-photo">
+                <img src="../assets/editors/banu.jpg" alt="M. Banu, PhD"
+                  onerror="this.src='../assets/editors/default.jpg'" loading="lazy">
+              </div>
+              <div class="editor-info">
+                <div class="editor-name">
+                  M. Banu, PhD
+                  <span class="editor-title">Assistant Professor</span>
+                </div>
+                <div class="editor-affiliation">
+                  Department of Mechanical Engineering, University of Michigan
+                </div>
+                <div class="editor-location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Ann Arbor, Michigan, United States
+                </div>
+                <div class="editor-social">
+                  <a href="https://www.linkedin.com/in/m-banu-umich" target="_blank" class="social-link linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="social-tooltip">LinkedIn Profile</span>
+                  </a>
+                  <a href="mailto:mbanu@umich.edu" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">mbanu@umich.edu</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Disclaimer Note -->
+      <div class="editor-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Disclaimer:</strong> All members of the Editorial Board have identified their affiliated institutions
+          or organizations, along with the corresponding country or geographic region. The LinkedIn profiles and email
+          addresses provided are for professional communication purposes. IJACM remains neutral with regard to any
+          jurisdictional claims.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../script.js"></script>
+
+  <script>
+    // Profile image fallback enhancement - FIXED NO BLINKING
+    document.addEventListener('DOMContentLoaded', function () {
+      // Preload default image to prevent flickering
+      const defaultImage = new Image();
+      defaultImage.src = '../assets/editors/default.jpg';
+
+      // Handle image errors without blinking
+      const profileImages = document.querySelectorAll('.editor-photo img');
+      profileImages.forEach(img => {
+        // Store the original source
+        const originalSrc = img.src;
+
+        img.addEventListener('error', function () {
+          // Only change if not already default
+          if (this.src !== defaultImage.src) {
+            this.src = defaultImage.src;
+            this.alt = 'Editor Profile Image';
+          }
+        });
+
+        // Ensure image is properly loaded
+        img.addEventListener('load', function () {
+          this.style.opacity = '1';
+        });
+
+        // Set initial opacity
+        img.style.opacity = '1';
+        img.style.transition = 'opacity 0.3s ease';
+      });
+
+      // Add smooth hover effects
+      const editorCards = document.querySelectorAll('.editor-card');
+      editorCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+          const img = this.querySelector('.editor-photo img');
+          if (img) {
+            img.style.transform = 'scale(1.05)';
+          }
+        });
+
+        card.addEventListener('mouseleave', function () {
+          const img = this.querySelector('.editor-photo img');
+          if (img) {
+            img.style.transform = 'scale(1)';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Paper & Guidelines - IJACM</title>
+  <meta name="keywords"
+    content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+  <meta name="description" content="Submit your research to IJACM. Read our author guidelines for publishing engineering research papers and technical manuscripts.">
+
+  <!-- MAIN SITE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    main {
+      padding: 30px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= PAGE LAYOUT ================= */
+    .reviewer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      gap: 40px;
+      flex: 1;
+    }
+
+    .reviewer-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto 30px;
+    }
+
+    /* ================= SIDEBAR NAVIGATION ================= */
+    .guideline-nav {
+      width: 320px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 30px;
+      height: fit-content;
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      padding: 30px 25px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0, 176, 255, 0.1);
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .guideline-nav::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .guideline-nav::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .guideline-nav::-webkit-scrollbar-thumb {
+      background: var(--secondary);
+      border-radius: 10px;
+    }
+
+    .nav-header {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      background: var(--bg-darker);
+      padding: 10px 0;
+      border-radius: var(--radius-sm);
+      z-index: 2;
+    }
+
+    .nav-header i {
+      font-size: 28px;
+    }
+
+    .nav-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .nav-step {
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-step:hover {
+      background: rgba(0, 176, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .nav-step.active {
+      background: rgba(0, 176, 255, 0.15);
+      border-left-color: var(--secondary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .nav-step.active::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--secondary);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .nav-step.active .step-number {
+      background: var(--gradient-secondary);
+      box-shadow: 0 0 10px rgba(0, 176, 255, 0.5);
+    }
+
+    .step-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-light);
+      flex: 1;
+    }
+
+    .nav-step.active .step-title {
+      color: var(--secondary);
+    }
+
+    /* ================= CONTENT CONTAINER ================= */
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .content-area {
+      flex: 1;
+      position: relative;
+      overflow-y: auto;
+      max-height: calc(100vh - 150px);
+      padding-right: 10px;
+    }
+
+    .content-area::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .content-area::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .content-area::-webkit-scrollbar-thumb {
+      background: var(--accent-yellow);
+      border-radius: 10px;
+    }
+
+    /* ================= SECTION STYLES ================= */
+    .section {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      margin-bottom: 30px;
+      padding: 35px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      opacity: 0.7;
+      transform: translateY(20px);
+      transition: all var(--transition-slow);
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+      border-color: rgba(0, 176, 255, 0.3);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .section.active::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-yellow), var(--secondary));
+    }
+
+    .section-header {
+      font-size: 28px;
+      margin-bottom: 25px;
+      color: var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 0;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-header i {
+      font-size: 32px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-content {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text-light);
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .section-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .section-content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .section-content::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 10px;
+    }
+
+    .section-content p {
+      margin-bottom: 20px;
+    }
+
+    .section-content ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .section-content li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .section-content li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-yellow);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .highlight-box {
+      background: rgba(255, 193, 7, 0.1);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      margin: 25px 0;
+      border-left: 5px solid var(--accent-yellow);
+      flex-shrink: 0;
+    }
+
+    .highlight-box strong {
+      color: var(--accent-yellow);
+    }
+
+    /* ================= RESPONSIVE STYLES ================= */
+    @media (max-width: 1200px) {
+      .reviewer-container {
+        gap: 30px;
+      }
+
+      .guideline-nav {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .reviewer-container {
+        flex-direction: column;
+        gap: 30px;
+        max-height: none;
+      }
+
+      .guideline-nav {
+        width: 100%;
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .content-area {
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .nav-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .nav-step {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .section {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .reviewer-title {
+        font-size: 32px;
+      }
+
+      .section {
+        padding: 25px;
+      }
+
+      .section-header {
+        font-size: 24px;
+      }
+
+      .nav-step {
+        padding: 15px;
+        min-width: 100%;
+      }
+
+      .step-title {
+        font-size: 14px;
+      }
+
+      .nav-steps {
+        flex-direction: column;
+      }
+
+      .reviewer-container {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .reviewer-title {
+        font-size: 28px;
+      }
+
+      .section-header {
+        font-size: 22px;
+      }
+
+      .section-content {
+        font-size: 16px;
+      }
+
+      .guideline-nav {
+        padding: 20px;
+      }
+
+      main {
+        padding: 15px 10px;
+      }
+    }
+
+    /* ================= ANIMATION & INDICATORS ================= */
+    .progress-indicator {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid transparent;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+    }
+
+    .progress-dot.active {
+      background: var(--secondary);
+      border-color: var(--white);
+      transform: scale(1.3);
+      box-shadow: 0 0 10px var(--secondary);
+    }
+
+    .scroll-hint {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--white);
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+      animation: pulseHint 2s infinite;
+    }
+
+    @keyframes pulseHint {
+
+      0%,
+      100% {
+        opacity: 0.8;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .scroll-hint i {
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* ================= SECTION TRANSITIONS ================= */
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section.fade-in {
+      animation: fadeInSection 0.5s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <div id="header-placeholder"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    <h2 class="reviewer-title">Reviewer Guidelines & Responsibilities</h2>
+
+    <div class="reviewer-container">
+      <!-- LEFT SIDEBAR NAVIGATION -->
+      <div class="guideline-nav">
+        <div class="nav-header">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Reviewer Guidelines</span>
+        </div>
+
+        <div class="nav-steps">
+          <div class="nav-step active" data-section="role">
+            <div class="step-number">1</div>
+            <div class="step-title">Role of Reviewers</div>
+          </div>
+
+          <div class="nav-step" data-section="selection">
+            <div class="step-number">2</div>
+            <div class="step-title">Reviewer Selection</div>
+          </div>
+
+          <div class="nav-step" data-section="model">
+            <div class="step-number">3</div>
+            <div class="step-title">Review Model</div>
+          </div>
+
+          <div class="nav-step" data-section="responsibilities">
+            <div class="step-number">4</div>
+            <div class="step-title">Responsibilities</div>
+          </div>
+
+          <div class="nav-step" data-section="criteria">
+            <div class="step-number">5</div>
+            <div class="step-title">Review Criteria</div>
+          </div>
+
+          <div class="nav-step" data-section="confidentiality">
+            <div class="step-number">6</div>
+            <div class="step-title">Confidentiality</div>
+          </div>
+
+          <div class="nav-step" data-section="conflict">
+            <div class="step-number">7</div>
+            <div class="step-title">Conflict of Interest</div>
+          </div>
+
+          <div class="nav-step" data-section="ethics">
+            <div class="step-number">8</div>
+            <div class="step-title">Ethical Considerations</div>
+          </div>
+
+          <div class="nav-step" data-section="timeliness">
+            <div class="step-number">9</div>
+            <div class="step-title">Timeliness</div>
+          </div>
+
+          <div class="nav-step" data-section="recognition">
+            <div class="step-number">10</div>
+            <div class="step-title">Reviewer Recognition</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTENT AREA -->
+      <div class="content-wrapper">
+        <div class="content-area" id="contentArea">
+          <!-- Role of Reviewers -->
+          <section class="section active" id="role">
+            <div class="section-header">
+              <i class="fas fa-user-tie"></i>
+              <span>Role of Reviewers</span>
+            </div>
+            <div class="section-content">
+              <p>
+                Reviewers play a vital role in maintaining the academic quality, integrity,
+                and credibility of the <strong>International Journal of Advanced Computing and Mechanical Systems
+                  (IJACM)</strong>.
+              </p>
+              <p>
+                IJACM relies on the expertise of qualified reviewers to provide objective,
+                constructive, and timely evaluations of submitted manuscripts.
+              </p>
+              <div class="highlight-box">
+                <strong>Key Role:</strong> Reviewers act as gatekeepers of scientific quality and ensure published
+                research meets the highest academic standards.
+              </div>
+            </div>
+          </section>
+
+          <!-- Reviewer Selection -->
+          <section class="section" id="selection">
+            <div class="section-header">
+              <i class="fas fa-user-check"></i>
+              <span>Reviewer Selection</span>
+            </div>
+            <div class="section-content">
+              <p>Reviewers are selected based on:</p>
+              <ul>
+                <li>Subject-matter expertise relevant to the manuscript</li>
+                <li>Research experience and publication record</li>
+                <li>Absence of conflicts of interest</li>
+                <li>Institutional or professional affiliation</li>
+              </ul>
+              <p>
+                All reviewers are independent experts from academia, research institutions,
+                or industry.
+              </p>
+            </div>
+          </section>
+
+          <!-- Review Model -->
+          <section class="section" id="model">
+            <div class="section-header">
+              <i class="fas fa-sitemap"></i>
+              <span>Review Model</span>
+            </div>
+            <div class="section-content">
+              <p>
+                IJACM follows a <strong>double-blind peer review process</strong>, in which:
+              </p>
+              <ul>
+                <li>Reviewer identities are not disclosed to authors</li>
+                <li>Author identities are not disclosed to reviewers</li>
+              </ul>
+              <p>
+                This process ensures fairness, impartiality, and unbiased evaluation.
+              </p>
+              <div class="highlight-box">
+                <strong>Double-Blind Benefit:</strong> This model minimizes bias and focuses evaluation purely on the
+                quality and merit of the research.
+              </div>
+            </div>
+          </section>
+
+          <!-- Reviewer Responsibilities -->
+          <section class="section" id="responsibilities">
+            <div class="section-header">
+              <i class="fas fa-tasks"></i>
+              <span>Reviewer Responsibilities</span>
+            </div>
+            <div class="section-content">
+              <p>Reviewers are expected to:</p>
+              <ul>
+                <li>Evaluate manuscripts objectively and confidentially</li>
+                <li>Assess originality, technical quality, and significance</li>
+                <li>Identify ethical concerns, plagiarism, or misconduct</li>
+                <li>Provide clear, constructive, and evidence-based feedback</li>
+                <li>Submit review reports within the agreed timeframe</li>
+                <li>Declare any conflicts of interest immediately</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Review Criteria -->
+          <section class="section" id="criteria">
+            <div class="section-header">
+              <i class="fas fa-clipboard-check"></i>
+              <span>Review Criteria</span>
+            </div>
+            <div class="section-content">
+              <p>Manuscripts are evaluated based on:</p>
+              <ul>
+                <li>Relevance to the journal's aims and scope</li>
+                <li>Novelty and contribution to the field</li>
+                <li>Technical soundness and methodological rigor</li>
+                <li>Quality of analysis, results, and discussion</li>
+                <li>Clarity, structure, and language quality</li>
+                <li>Adequacy of references and citations</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Confidentiality -->
+          <section class="section" id="confidentiality">
+            <div class="section-header">
+              <i class="fas fa-lock"></i>
+              <span>Confidentiality</span>
+            </div>
+            <div class="section-content">
+              <p>All manuscripts received for review are confidential documents.</p>
+              <ul>
+                <li>Manuscripts must not be shared or discussed with others</li>
+                <li>Unpublished material must not be used for personal research</li>
+                <li>Manuscript files must be securely disposed of after review</li>
+              </ul>
+              <div class="highlight-box">
+                <strong>Confidentiality is Paramount:</strong> Breaching confidentiality undermines the entire peer
+                review process and may result in removal from the reviewer database.
+              </div>
+            </div>
+          </section>
+
+          <!-- Conflict of Interest -->
+          <section class="section" id="conflict">
+            <div class="section-header">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>Conflict of Interest</span>
+            </div>
+            <div class="section-content">
+              <p>Reviewers must decline to review manuscripts if:</p>
+              <ul>
+                <li>They have personal or professional relationships with the authors</li>
+                <li>They have financial or competitive interests related to the work</li>
+                <li>They are unable to provide an unbiased evaluation</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Ethical Considerations -->
+          <section class="section" id="ethics">
+            <div class="section-header">
+              <i class="fas fa-balance-scale"></i>
+              <span>Ethical Considerations</span>
+            </div>
+            <div class="section-content">
+              <p>Reviewers should report concerns related to:</p>
+              <ul>
+                <li>Plagiarism or duplicate publication</li>
+                <li>Data fabrication or falsification</li>
+                <li>Ethical violations involving humans or animals</li>
+              </ul>
+              <p>
+                IJACM follows the ethical standards recommended by the
+                <strong>Committee on Publication Ethics (COPE)</strong>.
+              </p>
+            </div>
+          </section>
+
+          <!-- Timeliness -->
+          <section class="section" id="timeliness">
+            <div class="section-header">
+              <i class="fas fa-clock"></i>
+              <span>Timeliness</span>
+            </div>
+            <div class="section-content">
+              <ul>
+                <li>Accept reviews only if deadlines can be met</li>
+                <li>Complete reviews within the specified review period</li>
+                <li>Inform the editor promptly if delays are unavoidable</li>
+              </ul>
+              <p>
+                Timely reviews help maintain an efficient and fair publication process.
+              </p>
+            </div>
+          </section>
+
+          <!-- Reviewer Recognition -->
+          <section class="section" id="recognition">
+            <div class="section-header">
+              <i class="fas fa-award"></i>
+              <span>Reviewer Recognition</span>
+            </div>
+            <div class="section-content">
+              <ul>
+                <li>Formal reviewer acknowledgements</li>
+                <li>Certificates of review issued upon request</li>
+                <li>Reviewer confidentiality is always maintained</li>
+                <li>Opportunity to join the Editorial Board based on performance</li>
+              </ul>
+              <div class="highlight-box">
+                <strong>Appreciation:</strong> IJACM values and recognizes the vital contribution of reviewers in
+                advancing scientific knowledge.
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="progress-indicator" id="progressIndicator"></div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-hint" id="scrollHint">
+      <i class="fas fa-chevron-down"></i>
+      <span>Scroll to navigate through guidelines</span>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('.section');
+      const navSteps = document.querySelectorAll('.nav-step');
+      const contentArea = document.getElementById('contentArea');
+      const progressIndicator = document.getElementById('progressIndicator');
+      const scrollHint = document.getElementById('scrollHint');
+
+      // Create progress dots
+      sections.forEach((section, index) => {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        dot.dataset.section = section.id;
+        dot.title = section.querySelector('.section-header span').textContent;
+
+        dot.addEventListener('click', () => {
+          const targetSection = document.getElementById(section.id);
+          if (targetSection) {
+            scrollToSection(targetSection, true);
+          }
+        });
+
+        progressIndicator.appendChild(dot);
+      });
+
+      const progressDots = document.querySelectorAll('.progress-dot');
+
+      // Function to scroll to a specific section
+      function scrollToSection(section, smooth = true) {
+        // Calculate position relative to content area
+        const contentRect = contentArea.getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+        const scrollPosition = contentArea.scrollTop + (sectionRect.top - contentRect.top);
+
+        // Scroll content area to the section
+        if (smooth) {
+          contentArea.scrollTo({
+            top: scrollPosition - 20,
+            behavior: 'smooth'
+          });
+        } else {
+          contentArea.scrollTop = scrollPosition - 20;
+        }
+
+        // Update active states
+        updateActiveState(section.id);
+
+        // Add fade-in animation
+        section.classList.remove('fade-in');
+        void section.offsetWidth; // Trigger reflow
+        section.classList.add('fade-in');
+      }
+
+      // Update active state for a specific section
+      function updateActiveState(sectionId) {
+        // Update nav steps
+        navSteps.forEach(step => {
+          step.classList.remove('active');
+          if (step.dataset.section === sectionId) {
+            step.classList.add('active');
+          }
+        });
+
+        // Update sections
+        sections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === sectionId) {
+            section.classList.add('active');
+          }
+        });
+
+        // Update progress dots
+        progressDots.forEach(dot => {
+          dot.classList.remove('active');
+          if (dot.dataset.section === sectionId) {
+            dot.classList.add('active');
+          }
+        });
+      }
+
+      // Click handler for nav steps
+      navSteps.forEach(step => {
+        step.addEventListener('click', () => {
+          const sectionId = step.dataset.section;
+          const targetSection = document.getElementById(sectionId);
+
+          if (targetSection) {
+            scrollToSection(targetSection);
+          }
+        });
+      });
+
+      // Update active states based on scroll position in content area
+      function updateActiveStatesFromScroll() {
+        const contentRect = contentArea.getBoundingClientRect();
+        let currentSectionId = '';
+
+        // Find which section is currently in view within content area
+        sections.forEach(section => {
+          const sectionRect = section.getBoundingClientRect();
+          const sectionTop = sectionRect.top - contentRect.top;
+          const sectionHeight = sectionRect.height;
+
+          // Check if section is in the viewport (with some offset)
+          if (sectionTop <= contentArea.clientHeight * 0.4 &&
+            sectionTop + sectionHeight >= contentArea.clientHeight * 0.4) {
+            currentSectionId = section.id;
+          }
+        });
+
+        if (currentSectionId) {
+          updateActiveState(currentSectionId);
+        }
+
+        // Hide scroll hint after user starts scrolling
+        if (contentArea.scrollTop > 50) {
+          scrollHint.style.opacity = '0';
+          scrollHint.style.visibility = 'hidden';
+        }
+      }
+
+      // Add scroll event listener to content area
+      let scrollTimeout;
+      contentArea.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+
+        scrollTimeout = setTimeout(updateActiveStatesFromScroll, 50);
+      });
+
+      // Initialize with first section active
+      updateActiveState('role');
+
+      // Auto-hide scroll hint after 5 seconds
+      setTimeout(() => {
+        scrollHint.style.opacity = '0';
+        scrollHint.style.visibility = 'hidden';
+      }, 5000);
+    });
+  </script>
+</body>
+
+</html>

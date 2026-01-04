@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Scope - IJACM</title>
+  <meta name="keywords"
+    content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+  <meta name="description"
+    content="Learn about IJACM's mission, aims and scope. We cover computational mechanics, AI in engineering, robotics, and more.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    main {
+      padding: 20px;
+      min-height: 420px;
+    }
+
+    /* ================= PAGE SPECIFIC STYLES ================= */
+    /* Aims & Scope Specifics */
+    .aims-hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at center, rgba(0, 176, 255, 0.1) 0%, rgba(11, 44, 77, 0) 70%);
+    }
+
+    .aims-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .aims-intro {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Objectives List */
+    .objectives-box {
+      background: rgba(13, 27, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .objectives-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--secondary);
+    }
+
+    .objectives-title {
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .objectives-title i {
+      color: var(--accent);
+    }
+
+    .objectives-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .objective-item {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .objective-item i {
+      color: var(--secondary);
+      margin-top: 5px;
+    }
+
+    /* Scope Cards */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .scope-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      /* For animation */
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    .scope-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-glow);
+      border-color: rgba(0, 176, 255, 0.3);
+    }
+
+    .scope-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 176, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+    }
+
+    .scope-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .scope-topics {
+      list-style: none;
+      padding: 0;
+    }
+
+    .scope-topics li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .scope-topics li::before {
+      content: '•';
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+      line-height: 1;
+      top: -2px;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Staggered Delay */
+    .scope-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .scope-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .scope-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .scope-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .scope-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .scope-card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .aims-hero h1 {
+        font-size: 2rem;
+      }
+
+      .objectives-list {
+        grid-template-columns: 1fr;
+      }
+
+      .scope-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+      }
+
+      .scope-card {
+        padding: 20px;
+      }
+
+      .main {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="aims-hero">
+      <h1>Aims & Scope</h1>
+    </section>
+
+    <!-- Aims Introduction -->
+    <section class="aims-intro">
+      <p>
+        IJACM aims to publish original and impactful research advancing the integration of
+        computing methodologies with mechanical systems. We emphasize innovative
+        computational approaches, intelligent algorithms, and system-level applications.
+      </p>
+    </section>
+
+    <!-- Objectives Box -->
+    <section class="objectives-box">
+      <div class="objectives-title">
+        <i class="fas fa-bullseye"></i>
+        <span>Primary Objectives</span>
+      </div>
+      <div class="objectives-list">
+        <div class="objective-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Advance integration of computing & mechanical systems</span>
+        </div>
+        <div class="objective-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Promote intelligent algorithms & computational methods</span>
+        </div>
+        <div class="objective-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Facilitate academia-industry knowledge exchange</span>
+        </div>
+        <div class="objective-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Support interdisciplinary engineering research</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope Grid -->
+    <section class="scope-grid">
+
+      <!-- Card 1 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Advanced Computing</h3>
+        <ul class="scope-topics">
+          <li>AI & Machine learning in mechanics</li>
+          <li>Data-driven modeling & analytics</li>
+          <li>Digital twins & Cyber-physical systems</li>
+          <li>High-performance computing</li>
+          <li>Cloud & Edge computing applications</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Computational Mechanics</h3>
+        <ul class="scope-topics">
+          <li>Solid & Fluid mechanics simulations</li>
+          <li>Multiphysics & multiscale modeling</li>
+          <li>Finite element analysis (FEA)</li>
+          <li>Computational fluid dynamics (CFD)</li>
+          <li>Thermal system modeling</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-robot"></i></div>
+        <h3>Intelligent Systems</h3>
+        <ul class="scope-topics">
+          <li>Robotics & Autonomous systems</li>
+          <li>Mechatronics & Embedded control</li>
+          <li>Smart sensors & Actuators</li>
+          <li>Adaptive learning control</li>
+          <li>Intelligent optimization techniques</li>
+        </ul>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-industry"></i></div>
+        <h3>Industry 4.0</h3>
+        <ul class="scope-topics">
+          <li>Smart manufacturing systems</li>
+          <li>Additive manufacturing modeling</li>
+          <li>Industrial IoT (IIoT)</li>
+          <li>Predictive maintenance</li>
+          <li>Topology optimization</li>
+        </ul>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-project-diagram"></i></div>
+        <h3>Interdisciplinary Apps</h3>
+        <ul class="scope-topics">
+          <li>Renewable energy systems</li>
+          <li>Sustainable mechanical design</li>
+          <li>Human-machine interaction</li>
+          <li>Biomechanical systems</li>
+          <li>Medical device applications</li>
+        </ul>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="scope-card">
+        <div class="scope-icon"><i class="fas fa-flask"></i></div>
+        <h3>Emerging Research</h3>
+        <ul class="scope-topics">
+          <li>Quantum computing in mechanics</li>
+          <li>Neuromorphic computing</li>
+          <li>Explainable AI (XAI) for engineering</li>
+          <li>Swarm intelligence</li>
+          <li>Model-based enterprise (MBE)</li>
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

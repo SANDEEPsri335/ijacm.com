@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copyright - IJACM</title>
+    <meta name="keywords" content="International Journal of Advanced Computing and Mechanical Systems, IJACM journal, advanced computing research, mechanical systems engineering, peer-reviewed engineering journal, open access engineering journal, computational mechanics, mechatronics research, engineering publication, scientific research journal, computational fluid dynamics, finite element analysis, robotics and automation, artificial intelligence in engineering, machine learning applications, smart manufacturing, IoT in mechanical systems, cyber-physical systems, digital twin technology, additive manufacturing research, predictive maintenance, industrial automation, control systems engineering, thermal analysis, structural dynamics">
+    <meta name="description" content="Read Copyright at International Journal of Advanced Computing and Mechanical Systems. Open access engineering methodology and research.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= ROOT & RESET ================= */
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --success: #4caf50;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.25);
+      --shadow-glow: 0 0 20px rgba(0, 176, 255, 0.4);
+      --transition-fast: 0.25s ease;
+      --transition-normal: 0.4s ease;
+      --transition-slow: 0.6s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ================= HEADER ================= */
+    .page-header {
+      text-align: center;
+      margin-bottom: 70px;
+      padding: 50px 30px;
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--secondary), var(--accent));
+      animation: slideInHeader 1s ease-out;
+    }
+
+    @keyframes slideInHeader {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    /* ================= SECTION STYLES ================= */
+    .policy-section {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      margin-bottom: 50px;
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-normal);
+    }
+
+    .policy-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .policy-section:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 176, 255, 0.15);
+    }
+
+    .policy-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-yellow), var(--secondary));
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 25px;
+      font-size: 2rem;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: var(--shadow-glow);
+      transition: var(--transition-normal);
+    }
+
+    .policy-section:hover .section-icon {
+      transform: rotate(15deg) scale(1.05);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      background: linear-gradient(90deg, var(--accent-yellow), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-content {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    .section-content p {
+      margin-bottom: 25px;
+    }
+
+    /* ================= HIGHLIGHT BOXES ================= */
+    .highlight-box {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin: 35px 0;
+      border-left: 6px solid;
+      transition: all var(--transition-normal);
+    }
+
+    .highlight-box:hover {
+      transform: translateX(10px);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .highlight-box.ownership {
+      border-left-color: var(--secondary);
+    }
+
+    .highlight-box.license {
+      border-left-color: var(--success);
+    }
+
+    .highlight-box.warranty {
+      border-left-color: var(--accent);
+    }
+
+    /* ================= KEY POINTS GRID ================= */
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .key-point {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: all var(--transition-normal);
+    }
+
+    .key-point:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(0, 176, 255, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+
+    .key-point::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-normal);
+    }
+
+    .key-point:hover::before {
+      transform: scaleX(1);
+    }
+
+    .point-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      color: var(--white);
+    }
+
+    .key-point h4 {
+      font-size: 1.4rem;
+      color: var(--accent-yellow);
+      margin-bottom: 15px;
+    }
+
+    .key-point p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ================= CC LICENSE BADGE ================= */
+    .cc-badge-container {
+      background: rgba(33, 150, 243, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin: 50px 0;
+      border: 2px solid rgba(33, 150, 243, 0.3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cc-badge-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(33, 150, 243, 0.05) 0%, transparent 70%);
+      animation: pulse 8s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+    .cc-logo {
+      width: 120px;
+      height: 120px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 3.5rem;
+      color: var(--primary);
+      box-shadow: var(--shadow-lg);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .cc-badge-container h3 {
+      color: var(--secondary);
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .cc-badge-container p {
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ================= RIGHTS COMPARISON ================= */
+    .rights-comparison {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .rights-column {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-md);
+      padding: 35px;
+      border-top: 5px solid;
+      transition: all var(--transition-normal);
+    }
+
+    .rights-column:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .rights-column.authors {
+      border-top-color: var(--success);
+    }
+
+    .rights-column.journal {
+      border-top-color: var(--secondary);
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .column-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .authors .column-icon {
+      background: var(--success);
+    }
+
+    .journal .column-icon {
+      background: var(--secondary);
+    }
+
+    .rights-column h4 {
+      font-size: 1.6rem;
+      color: var(--text-light);
+    }
+
+    .rights-list {
+      list-style: none;
+    }
+
+    .rights-list li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+      color: var(--text-muted);
+    }
+
+    .rights-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .journal .rights-list li::before {
+      color: var(--secondary);
+    }
+
+    /* ================= ARCHIVING SECTION ================= */
+    .archiving-section {
+      background: rgba(255, 193, 7, 0.08);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      margin: 50px 0;
+      border-left: 6px solid var(--accent-yellow);
+    }
+
+    .archiving-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .archive-platform {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      text-align: center;
+      transition: all var(--transition-normal);
+    }
+
+    .archive-platform:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: var(--shadow-md);
+    }
+
+    .platform-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 193, 7, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      color: var(--accent-yellow);
+    }
+
+    .archive-platform h5 {
+      color: var(--accent-yellow);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .archive-platform p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ================= WARRANTY POINTS ================= */
+    .warranty-points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 35px 0;
+    }
+
+    .warranty-point {
+      display: flex;
+      align-items: center;
+      padding: 25px;
+      background: rgba(255, 64, 129, 0.05);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--accent);
+      transition: all var(--transition-normal);
+    }
+
+    .warranty-point:hover {
+      transform: translateX(10px);
+      background: rgba(255, 64, 129, 0.08);
+    }
+
+    .warranty-number {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-right: 25px;
+      flex-shrink: 0;
+    }
+
+    .warranty-point h4 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+    }
+
+    .warranty-point p {
+      color: var(--text-muted);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 992px) {
+      .page-title {
+        font-size: 2.8rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .policy-section {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.3rem;
+      }
+
+      .page-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .rights-comparison {
+        flex-direction: column;
+      }
+
+      .policy-section {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .cc-logo {
+        width: 90px;
+        height: 90px;
+        font-size: 2.8rem;
+      }
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-animation>* {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .stagger-animation>*:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .stagger-animation>*:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .stagger-animation>*:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .stagger-animation>*:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .stagger-animation>*:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <div id="header-placeholder"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <h1 class="page-title">Copyright & Licensing</h1>
+      <p class="page-subtitle">
+        Clarifying the legal relationship between authors and the journal, and explaining the benefits of the CC BY 4.0
+        license for maximum research impact.
+      </p>
+    </header>
+
+    <!-- COPYRIGHT OWNERSHIP SECTION -->
+    <section id="ownership" class="policy-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-copyright"></i>
+        </div>
+        <h2 class="section-title">Copyright Ownership</h2>
+      </div>
+      <div class="section-content">
+        <p>At the <strong>International Journal of Advanced Computing and Mechanical Systems (IJACM)</strong>, we
+          believe that authors should remain the primary owners of their intellectual property.</p>
+
+        <div class="highlight-box ownership">
+          <div class="key-points-grid">
+            <div class="key-point">
+              <div class="point-icon">
+                <i class="fas fa-user-shield"></i>
+              </div>
+              <h4>Author Retention</h4>
+              <p>Unlike traditional publishing models where authors transfer copyright to the publisher, <strong>IJACM
+                  authors retain full copyright</strong> of their manuscripts.</p>
+            </div>
+
+            <div class="key-point">
+              <div class="point-icon">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <h4>Publishing Grant</h4>
+              <p>By submitting to the journal, authors grant <em>IJACM</em> a non-exclusive license to publish, archive,
+                and commercially distribute the work in digital and print formats.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LICENSING FRAMEWORK SECTION -->
+    <section id="licensing" class="policy-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <h2 class="section-title">Licensing Framework</h2>
+      </div>
+      <div class="section-content">
+        <p>All research published in <em>IJACM</em> is licensed under the <strong>Creative Commons Attribution 4.0
+            International (CC BY 4.0)</strong>. This is the gold standard for open-access publishing.</p>
+
+        <div class="cc-badge-container">
+          <div class="cc-logo">
+            <i class="fab fa-creative-commons"></i>
+          </div>
+          <h3>Creative Commons Attribution 4.0</h3>
+          <p>This license permits maximum dissemination and reuse of research while ensuring authors receive proper
+            credit for their work.</p>
+        </div>
+
+        <div class="highlight-box license">
+          <h3 style="color: var(--success); margin-bottom: 20px;">What does CC BY 4.0 allow?</h3>
+          <p>The license permits anyone to:</p>
+
+          <div class="rights-comparison">
+            <div class="rights-column authors">
+              <div class="column-header">
+                <div class="column-icon">
+                  <i class="fas fa-share-alt"></i>
+                </div>
+                <h4>Share</h4>
+              </div>
+              <p>Copy and redistribute the material in any medium or format.</p>
+            </div>
+
+            <div class="rights-column journal">
+              <div class="column-header">
+                <div class="column-icon">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <h4>Adapt</h4>
+              </div>
+              <p>Remix, transform, and build upon the material for any purpose, even commercially.</p>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 25px; padding: 20px; background: rgba(76, 175, 80, 0.1); border-radius: var(--radius-sm);">
+            <p style="color: var(--success); margin: 0;">
+              <i class="fas fa-info-circle"></i>
+              <strong>The only condition is Attribution:</strong> Users must give appropriate credit, provide a link to
+              the license, and indicate if changes were made. This ensures that the original authors always receive
+              recognition for their discovery.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHTS OF AUTHORS & JOURNAL SECTION -->
+    <section id="rights" class="policy-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h2 class="section-title">Rights of Authors & Journal</h2>
+      </div>
+      <div class="section-content">
+        <p>Because you retain the copyright, you have broad rights to reuse your work without seeking permission from
+          the journal.</p>
+
+        <div class="rights-comparison">
+          <div class="rights-column authors">
+            <div class="column-header">
+              <div class="column-icon">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h4>Rights of Authors</h4>
+            </div>
+            <ul class="rights-list">
+              <li>Using the article in your own teaching or for internal institutional purposes.</li>
+              <li>Including the article (or portions of it) in a thesis, dissertation, or book.</li>
+              <li>Posting the "Version of Record" on personal websites or institutional repositories immediately upon
+                publication.</li>
+            </ul>
+          </div>
+
+          <div class="rights-column journal">
+            <div class="column-header">
+              <div class="column-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h4>Rights of the Journal</h4>
+            </div>
+            <ul class="rights-list">
+              <li>The right to identify <em>IJACM</em> as the original place of publication.</li>
+              <li>The right to migrate the work to different formats to ensure long-term digital preservation.</li>
+              <li>The right to include the work in various scholarly indexes and databases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SELF-ARCHIVING SECTION -->
+        <div class="archiving-section">
+          <h3 style="color: var(--accent-yellow); margin-bottom: 25px; font-size: 1.8rem;">
+            <i class="fas fa-archive"></i> Self-Archiving & Repositories
+          </h3>
+          <p>Authors are encouraged to share their work widely. You may post the final published PDF (Version of Record)
+            immediately to:</p>
+
+          <div class="archiving-grid">
+            <div class="archive-platform">
+              <div class="platform-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <h5>Personal Websites</h5>
+              <p>Your professional academic homepage or blog</p>
+            </div>
+
+            <div class="archive-platform">
+              <div class="platform-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <h5>Institutional Repositories</h5>
+              <p>Your university's digital archive or library system</p>
+            </div>
+
+            <div class="archive-platform">
+              <div class="platform-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h5>Academic Networks</h5>
+              <p>Platforms like ResearchGate or Academia.edu</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHOR WARRANTIES SECTION -->
+    <section id="warranties" class="policy-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <h2 class="section-title">Author Warranties</h2>
+      </div>
+      <div class="section-content">
+        <p>By agreeing to our licensing terms, authors certify that:</p>
+
+        <div class="highlight-box warranty">
+          <div class="warranty-points">
+            <div class="warranty-point">
+              <div class="warranty-number">1</div>
+              <div>
+                <h4>Originality & Non-Infringement</h4>
+                <p>The work is original and does not infringe upon the intellectual property rights of any third party.
+                </p>
+              </div>
+            </div>
+
+            <div class="warranty-point">
+              <div class="warranty-number">2</div>
+              <div>
+                <h4>Third-Party Permissions</h4>
+                <p>If the work contains third-party material (such as images or charts), the authors have obtained the
+                  necessary permissions to publish them under the CC BY 4.0 license.</p>
+              </div>
+            </div>
+
+            <div class="warranty-point">
+              <div class="warranty-number">3</div>
+              <div>
+                <h4>Exclusive Submission</h4>
+                <p>The manuscript has not been published elsewhere and is not currently under consideration by another
+                  journal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="margin-top: 40px; padding: 25px; background: rgba(0, 176, 255, 0.08); border-radius: var(--radius-md); text-align: center;">
+          <h4 style="color: var(--secondary); margin-bottom: 15px;">Need More Information?</h4>
+          <p style="color: var(--text-muted); margin-bottom: 20px;">
+            For specific questions about copyright, licensing, or how to reuse your work, please contact our editorial
+            office.
+          </p>
+          <a href="mailto:copyright@ijacm.org"
+            style="display: inline-block; background: var(--gradient-secondary); color: white; padding: 12px 30px; border-radius: var(--radius-sm); font-weight: 600;">
+            <i class="fas fa-envelope"></i> copyright@ijacm.org
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-placeholder"></div>
+  <script src="../script.js"></script>
+
+  <script>
+    // Scroll-triggered animations for sections
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('.policy-section');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      });
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Animate key points on hover
+      const keyPoints = document.querySelectorAll('.key-point');
+      keyPoints.forEach(point => {
+        point.addEventListener('mouseenter', function () {
+          this.style.transform = 'translateY(-8px)';
+        });
+
+        point.addEventListener('mouseleave', function () {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Floating animation for CC logo
+      const ccLogo = document.querySelector('.cc-logo');
+      if (ccLogo) {
+        setInterval(() => {
+          ccLogo.style.transform = 'translateY(-15px)';
+          setTimeout(() => {
+            ccLogo.style.transform = 'translateY(0)';
+          }, 3000);
+        }, 6000);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Paper & Guidelines - IJACM</title>
+    <meta name="keywords"
+        content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+    <meta name="description"
+        content="Submit your research paper to IJACM. Review our guidelines and submission process.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ================= GLOBAL STYLES ================= */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #1a237e;
+            --secondary: #00b0ff;
+            --accent: #ff4081;
+            --accent-yellow: #ffc107;
+            --bg-dark: #0b2c4d;
+            --bg-darker: #061a2f;
+            --text-light: #f5f7ff;
+            --text-muted: #b0bec5;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+            --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        main {
+            padding: 20px;
+            min-height: 420px;
+        }
+
+        /* ================= PAGE SPECIFIC STYLES ================= */
+        /* Submit Page Specifics (Dark Theme) */
+        .submit-page-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .submission-box {
+            background: rgba(13, 27, 42, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .submission-box h2 {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .submission-box h2 i {
+            color: var(--secondary);
+        }
+
+        .submission-guide {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--accent-yellow);
+        }
+
+        .submission-guide a {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-section h3 i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group label i {
+            color: var(--secondary);
+            margin-right: 8px;
+            width: 16px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            color: var(--white);
+            transition: var(--transition-fast);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 3px rgba(0, 176, 255, 0.1);
+        }
+
+        /* File Upload */
+        .file-upload {
+            position: relative;
+        }
+
+        .file-label {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-muted);
+            transition: var(--transition-normal);
+            width: 100%;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-label:hover {
+            border-color: var(--secondary);
+            background: rgba(0, 176, 255, 0.05);
+            color: var(--white);
+        }
+
+        .file-label i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--accent-yellow);
+            text-align: center;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+        }
+
+        .checkbox-group input {
+            margin-top: 5px;
+            cursor: pointer;
+            accent-color: var(--secondary);
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-group a {
+            color: var(--secondary);
+        }
+
+        /* Submit Button */
+        .submit-btn-form {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            border: none;
+            padding: 16px 30px;
+            border-radius: var(--radius-sm);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            transition: var(--transition-normal);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .submit-btn-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 176, 255, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .submit-page-wrapper {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            .submission-box {
+                padding: 25px 15px;
+            }
+
+            .submission-box h2 {
+                font-size: 1.6rem;
+            }
+
+            .form-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .checkbox-group {
+                align-items: flex-start;
+            }
+
+            .checkbox-group input {
+                margin-top: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <main class="submit-page-wrapper">
+        <div class="submission-box">
+            <h2><i class="fas fa-paper-plane"></i> Submit Your Paper</h2>
+            <p class="submission-guide">
+                Please fill in the details below. Ensure your paper follows the
+                <a href="author-guidelines.html" target="_blank">Author Guidelines</a> before submission.
+            </p>
+
+            <form id="submissionForm" action="https://formsubmit.co/sandeep.sri335@gmail.com" method="POST"
+                enctype="multipart/form-data">
+
+                <!-- Hidden Fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New Paper Submission - IJACM">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_format" value="json">
+
+                <!-- User Info -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user-circle"></i> Submitter Details</h3>
+                    <div class="form-group">
+                        <label for="submitterName"><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="submitterName" name="name" required placeholder="Your Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="submitterEmail"><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="submitterEmail" name="email" required
+                            placeholder="your.email@example.com">
+                    </div>
+                </div>
+
+                <!-- Paper Details -->
+                <div class="form-section">
+                    <h3><i class="fas fa-file-alt"></i> Paper Information</h3>
+                    <div class="form-group">
+                        <label for="paperTitle"><i class="fas fa-heading"></i> Paper Title *</label>
+                        <input type="text" id="paperTitle" name="paper_title" required
+                            placeholder="Full title of the manuscript">
+                    </div>
+                    <div class="form-group">
+                        <label for="paperAbstract"><i class="fas fa-align-left"></i> Abstract *</label>
+                        <textarea id="paperAbstract" name="abstract" rows="5" required
+                            placeholder="Brief abstract (200-300 words)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="paperKeywords"><i class="fas fa-tags"></i> Keywords *</label>
+                        <input type="text" id="paperKeywords" name="keywords" required
+                            placeholder="Comma separated keywords (e.g., AI, Mechanics, IoT)">
+                    </div>
+                </div>
+
+                <!-- Authors -->
+                <div class="form-section">
+                    <h3><i class="fas fa-users"></i> Authors & Affiliations</h3>
+                    <div class="form-group">
+                        <label for="paperAuthors"><i class="fas fa-list"></i> Author List *</label>
+                        <textarea id="paperAuthors" name="authors" rows="3" required
+                            placeholder="List of all authors with affiliations"></textarea>
+                    </div>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-section">
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Upload Manuscript</h3>
+                    <div class="form-group">
+                        <label><i class="fas fa-file-pdf"></i> PDF / Word File *</label>
+                        <div class="file-upload">
+                            <input type="file" id="paperFile" name="attachment" accept=".pdf,.doc,.docx" required>
+                            <label for="paperFile" class="file-label">
+                                <i class="fas fa-upload"></i>
+                                <span>Click to Upload File (Max 5 MB)</span>
+                            </label>
+                            <div id="fileName" class="file-name"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="form-section">
+                    <h3><i class="fas fa-check-double"></i> Declaration</h3>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="decl1" name="declaration_original" required>
+                        <label for="decl1">I confirm this is original work not published elsewhere.</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="decl2" name="declaration_terms" required>
+                        <label for="decl2">I agree to the <a href="plagiarism-policy.html" target="_blank">Plagiarism
+                                Policy</a> & <a href="copyright.html" target="_blank">Terms</a>.</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn-form">
+                    <i class="fas fa-paper-plane"></i> Submit Manuscript
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="../script.js"></script>
+    <script>
+        // Form Submission Logic
+        document.getElementById('submissionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Basic HTML validation
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
+            // File Size Validation
+            const fileInput = document.getElementById('paperFile');
+            if (fileInput.files.length > 0) {
+                if (fileInput.files[0].size > 5 * 1024 * 1024) {
+                    showNotification('File is too large. Max 5MB.', 'error');
+                    return;
+                }
+            }
+
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn-form');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending... Please wait.';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Success: Show Thank You Message
+                        document.querySelector('.submission-box').innerHTML = `
+                        <div style="text-align: center; padding: 40px; animation: slideIn 0.5s ease;">
+                            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4caf50; margin-bottom: 20px;"></i>
+                            <h2 style="color: var(--white); margin-bottom: 15px;">Thank You!</h2>
+                            <p style="font-size: 1.2rem; color: var(--text-light); line-height: 1.6;">
+                                Thank you, your form has been submitted successfully.<br>
+                                We will contact you soon.
+                            </p>
+                        </div>
+                    `;
+                        // Optional: Scroll to the message if needed
+                        document.querySelector('.submission-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Submission failed. Please try again or contact support.', 'error');
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                });
+        });
+
+
+        // File Input Name Display and Validation
+        document.getElementById('paperFile').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+
+            if (file) {
+                if (file.size > maxSize) {
+                    showNotification('File is too large. Maximum allowed size is 5 MB.', 'error');
+                    this.value = ''; // Clear input
+                    document.getElementById('fileName').textContent = '';
+                } else {
+                    document.getElementById('fileName').textContent = 'Selected: ' + file.name;
+                }
+            } else {
+                document.getElementById('fileName').textContent = '';
+            }
+        });
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? '#2e7d32' : '#d32f2f'};
+                color: white;
+                border-radius: 6px;
+                z-index: 10000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                animation: slideIn 0.3s ease;
+            `;
+
+            // Icon
+            const icon = type === 'success' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-exclamation-circle"></i>';
+            notification.innerHTML = `${icon} <span>${message}</span>`;
+
+            document.body.appendChild(notification);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Add animations styles
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

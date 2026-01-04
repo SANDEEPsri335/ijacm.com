@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Journal Issues - IJACM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords"
+    content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+  <meta name="description" content="Browse current and past issues of IJACM. Explore the latest research in mechanical engineering and advanced computing.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 15px rgba(0, 176, 255, 0.3);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    main {
+      padding: 60px 20px 100px;
+      min-height: 600px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ================= PAGE TITLE ================= */
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .page-header h2 {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header h2::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto 0;
+      border-radius: 2px;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ================= ISSUE INFO CARD ================= */
+    .issue-info-card {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin-bottom: 50px;
+      border: 1px solid rgba(0, 176, 255, 0.2);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .issue-info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(0, 176, 255, 0.1) 0%, rgba(0, 176, 255, 0) 70%);
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+    }
+
+    .issue-details h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+
+    .issue-details p {
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .issue-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-yellow);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ================= ARTICLE CARDS ================= */
+    .articles-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .article-card {
+      background: rgba(13, 27, 42, 0.9);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 176, 255, 0.3);
+    }
+
+    .article-badge {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      border-radius: 0 0 var(--radius-sm) 0;
+    }
+
+    .article-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--secondary);
+      line-height: 1.4;
+    }
+
+    .article-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .article-authors {
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    .article-doi {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      word-break: break-all;
+    }
+
+    .article-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: auto;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-secondary);
+      color: white;
+      flex-grow: 1;
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      flex-grow: 1;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ================= PAGINATION ================= */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .page-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .page-btn:hover {
+      background: rgba(0, 176, 255, 0.2);
+      border-color: rgba(0, 176, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .page-btn.active {
+      background: var(--gradient-secondary);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .page-btn.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .page-btn.disabled:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .pagination-ellipsis {
+      color: var(--text-muted);
+      padding: 0 10px;
+    }
+
+    /* ================= LOADING STATE ================= */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+
+    .loading-spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid var(--secondary);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      .page-header h2 {
+        font-size: 2.2rem;
+      }
+
+      .articles-container {
+        grid-template-columns: 1fr;
+      }
+
+      .issue-info-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+      }
+
+      .issue-stats {
+        justify-content: center;
+      }
+
+      .article-actions {
+        flex-direction: column;
+      }
+
+      .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .page-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <div id="header-placeholder"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="page-header">
+      <h2>Current Issue</h2>
+      <!-- Dynamically filled by JS -->
+      <p id="current-issue-date">Latest Volume & Issue</p>
+    </div>
+
+    <!-- Issue Info Card -->
+    <!-- Issue Info Card REMOVED as per request -->
+    <!-- 
+    <div class="issue-info-card">
+       ...
+    </div> 
+    -->
+
+    <!-- Articles Container -->
+    <div class="articles-container" id="articles">
+      <!-- Articles will be loaded here by JavaScript -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+      <div class="pagination" id="pagination">
+        <!-- Pagination will be generated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../js/current-issue.js"></script>
+  <script src="../script.js"></script>
+</body>
+
+</html>

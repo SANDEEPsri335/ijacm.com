@@ -1,0 +1,254 @@
+<style>
+    /* ================= FOOTER ================= */
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: #061a2f;
+        color: #e0e6ed;
+        padding: 60px 80px;
+        /* Increased padding */
+        gap: 50px;
+        margin-top: auto;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* MAIN TWO-COLUMN AREA */
+    .footer-main {
+        display: grid;
+        grid-template-columns: 2fr 1.2fr;
+        /* Adjusted ratio for better balance */
+        gap: 60px;
+        flex: 1;
+    }
+
+    /* FOLLOW US */
+    .footer-follow {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 150px;
+    }
+
+    /* HEADINGS */
+    .footer h4 {
+        font-size: 18px;
+        /* Bigger heading */
+        margin-bottom: 25px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        color: #00b0ff;
+        /* Unified Blue */
+    }
+
+    .footer h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 3px;
+        border-radius: 2px;
+        background: #00b0ff;
+        /* Unified Blue */
+    }
+
+    /* Specific overrides removed for uniform color */
+
+    /* TEXT */
+    .footer p {
+        font-size: 15px;
+        /* Bigger text */
+        line-height: 1.8;
+        /* Better spacing */
+        margin: 0;
+        color: #b0bec5;
+    }
+
+    /* ADDRESS SPECIAL STYLING */
+    .address-block {
+        margin-bottom: 8px;
+        /* Reduced spacing */
+    }
+
+    .contact-block {
+        margin-top: 5px;
+        /* Reduced spacing */
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+    }
+
+    .contact-item i {
+        color: #00e5ff;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* LINKS */
+    .footer a {
+        color: #e0e6ed;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .footer a:hover {
+        color: #00e5ff;
+        padding-left: 5px;
+        /* Subtle movement */
+    }
+
+    /* COPYRIGHT & DESIGNER */
+    .copyright-text {
+        font-size: 13px !important;
+        margin-top: 20px !important;
+        color: #90a4ae !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+    }
+
+    .copyright-text a {
+        color: #00b0ff;
+        /* Blue color */
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .copyright-text a:hover {
+        text-decoration: underline;
+    }
+
+    .designer-text {
+        margin-top: 20px !important;
+        font-size: 13px !important;
+        color: #90a4ae;
+    }
+
+    .designer-text a {
+        color: #00b0ff;
+        /* Blue color */
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .designer-text a:hover {
+        text-decoration: underline;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-icons a {
+        width: 42px;
+        height: 42px;
+        background: rgba(255, 255, 255, 0.08);
+        /* Glass effect */
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .social-icons a:hover {
+        background: #00e5ff;
+        color: #061a2f;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+        padding-left: 0;
+        /* Reset link padding */
+        border-color: #00e5ff;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 900px) {
+        .footer {
+            flex-direction: column;
+            padding: 50px 30px;
+            gap: 50px;
+        }
+
+        .footer-main {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-follow {
+            width: 100%;
+            align-items: flex-start;
+            /* Ensure left align on mobile */
+        }
+    }
+</style>
+
+<footer class="footer">
+    <div class="footer-main">
+
+        <!-- COLUMN 1: ABOUT -->
+        <div class="footer-about">
+            <h4>About IJACM</h4>
+            <p>
+                IJACM is an international, peer-reviewed, open-access journal focusing on
+                advanced computing and mechanical systems research. The journal supports
+                ethical publishing and high-quality interdisciplinary scholarship.
+                All articles are freely accessible globally.
+            </p>
+            <p class="copyright-text">
+                &copy; 2025 <a href="#"
+                    onclick="window.location.href = window.location.pathname.includes('/pages/') ? '../index.html' : 'index.html'; return false;">
+                    IJACM</a>. All rights reserved.
+            </p>
+        </div>
+
+        <!-- COLUMN 2: ADDRESS -->
+        <div class="footer-address">
+            <h4>Contact Info</h4>
+            <div class="address-block">
+                <p>
+                    <strong>Head Office:</strong><br>
+                    Buchi Reddy Palem, Nellore Dist,<br>
+                    Andhra Pradesh, India - 524305
+                </p>
+            </div>
+            <div class="contact-block">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:editor@ijacm.org">editor@ijacm.org</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91-9492622379</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOLLOW US -->
+    <div class="footer-follow">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+           </div>
+</footer>

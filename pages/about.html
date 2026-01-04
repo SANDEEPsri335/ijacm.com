@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Scope - IJACM</title>
+  <meta name="keywords"
+    content="advanced computing, mechanical systems, engineering research, open access journal, peer reviewed, IJACM">
+  <meta name="description"
+    content="Learn about IJACM's mission, editorial board, and commitment to open-access publishing.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ================= GLOBAL STYLES ================= */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --accent: #ff4081;
+      --accent-yellow: #ffc107;
+      --bg-dark: #0b2c4d;
+      --bg-darker: #061a2f;
+      --text-light: #f5f7ff;
+      --text-muted: #b0bec5;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      --gradient-secondary: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient-dark: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      --gradient2: linear-gradient(135deg, #00b0ff 0%, #2979ff 100%);
+      --gradient3: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+      --radius: 12px;
+      --radius-sm: 6px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ================= ABOUT PAGE SPECIFIC ================= */
+    .about-page-body {
+      background: linear-gradient(135deg, #0b2c4d 0%, #0d1b2a 100%);
+      position: relative;
+      color: #eee;
+      min-height: 100vh;
+    }
+
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, rgba(26, 35, 126, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 176, 255, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .about-main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section - FIXED */
+    .hero-section {
+      text-align: center;
+      padding: 60px 30px;
+      margin: 40px auto;
+      border-radius: var(--radius);
+      background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 1000px;
+    }
+
+    .hero-title {
+      font-family: 'Roboto Slab', serif;
+      color: #fff;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      animation: fadeInScale 1s ease-out;
+      line-height: 1.2;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .hero-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      text-align: justify;
+      padding: 0 10px;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 30px auto;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient2);
+    }
+
+    .content-section.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .section-title {
+      font-family: 'Roboto Slab', serif;
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--secondary);
+    }
+
+    .section-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin: 0 0 15px 0;
+      text-align: justify;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 25px 0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      padding: 30px 20px;
+      box-shadow: none;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border-color: rgba(0, 176, 255, 0.3);
+    }
+
+    .card-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient2);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 28px;
+    }
+
+    .card h3 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Stats */
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 25px 30px;
+      background: rgba(13, 27, 42, 0.8);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-width: 150px;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 176, 255, 0.3);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--gradient2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+      font-family: 'Roboto Slab', serif;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Features List */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+    }
+
+    .feature-list li {
+      padding: 15px 0 15px 45px;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      color: #00e5ff;
+      font-size: 16px;
+    }
+
+    .feature-list strong {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    /* Utils */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--gradient3);
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient2);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 176, 255, 0.4);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Main Content Area */
+    main {
+      padding: 40px 20px 80px;
+      min-height: 500px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 40px 20px;
+        margin: 20px auto;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+        padding: 0;
+        text-align: left;
+      }
+
+      .content-section {
+        padding: 25px 20px;
+        margin: 25px auto;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .stats-container {
+        gap: 20px;
+      }
+
+      .stat-card {
+        padding: 20px;
+        min-width: 120px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .feature-list li {
+        padding-left: 40px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .content-section {
+        padding: 20px 15px;
+      }
+
+      .card {
+        padding: 25px 15px;
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="about-page-body">
+
+  <div id="header-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <div class="animated-bg"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main>
+    <div class="about-main-container">
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h1 class="hero-title">About IJACM</h1>
+        <p class="hero-subtitle">
+          IJACM is an international, peer-reviewed, open-access journal focusing on advanced computing and mechanical
+          systems research. The journal supports ethical publishing and high-quality interdisciplinary scholarship. All
+          articles are freely accessible.
+        </p>
+      </section>
+
+      <!-- Vision & Mission -->
+      <section class="content-section" id="vision-mission">
+        <h2 class="section-title"><i class="fas fa-eye"></i> Vision & Mission</h2>
+        <div class="section-content">
+          <p>
+            To bridge the gap between theoretical computing and practical mechanical engineering. We provide a global
+            platform for innovative research in computational methods, intelligent algorithms, and system-level
+            applications.
+          </p>
+          <p>
+            Our mission is to accelerate scientific discovery by publishing high-quality research that advances both
+            computing and mechanical engineering disciplines, while maintaining the highest standards of peer review
+            and ethical publishing.
+          </p>
+        </div>
+      </section>
+
+      <!-- Publishing Excellence -->
+      <section class="content-section" id="publishing-excellence">
+        <h2 class="section-title"><i class="fas fa-award"></i> Publishing Excellence</h2>
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-unlock-alt"></i></div>
+            <h3>Open Access</h3>
+            <p>Immediate, unrestricted access to all research. No paywalls or subscription fees for readers.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-balance-scale-right"></i></div>
+            <h3>CC BY 4.0</h3>
+            <p>Authors retain copyright with full attribution. Maximum dissemination and reuse of research.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-satellite"></i></div>
+            <h3>Global Reach</h3>
+            <p>Permanent online accessibility worldwide. Indexed in major academic databases.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quality Standards -->
+      <section class="content-section" id="quality-standards">
+        <h2 class="section-title"><i class="fas fa-star"></i> Quality Standards</h2>
+        <ul class="feature-list">
+          <li><strong>Double-Blind Peer Review:</strong> Ensuring unbiased evaluation by experts in the field.</li>
+          <li><strong>Ethical Integrity:</strong> Strict adherence to COPE guidelines and publication ethics.</li>
+          <li><strong>Plagiarism Screening:</strong> Comprehensive checks with similarity index below 15% requirement.
+          </li>
+          <li><strong>Rigorous Standards:</strong> All manuscripts undergo thorough technical and editorial review.</li>
+          <li><strong>Transparent Process:</strong> Clear communication throughout the publication journey.</li>
+        </ul>
+      </section>
+
+      <!-- Who We Serve -->
+      <section class="content-section" id="who-we-serve">
+        <h2 class="section-title"><i class="fas fa-users-cog"></i> Our Audience</h2>
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Researchers</h3>
+            <p>Scientists and academics in computing, mechanical engineering, and interdisciplinary fields.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+            <h3>Scholars</h3>
+            <p>Doctoral & Master's students seeking publication venues for their innovative research.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fas fa-industry"></i></div>
+            <h3>Industry Professionals</h3>
+            <p>R&D engineers and manufacturing experts looking for cutting-edge applications.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Editorial Governance -->
+      <section class="content-section" id="editorial-governance">
+        <h2 class="section-title"><i class="fas fa-chess-queen"></i> Editorial Governance</h2>
+        <div class="section-content">
+          <p>
+            Guided by an international Editorial Board of senior academics and industry leaders ensuring high quality
+            and
+            rigorous peer review. Our board members represent leading institutions from around the world, bringing
+            diverse
+            expertise and perspectives to maintain the journal's standards.
+          </p>
+          <p>
+            The editorial process is designed to be efficient, transparent, and supportive of authors while maintaining
+            the highest standards of academic rigor. We aim for constructive feedback that helps improve research
+            quality.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../script.js"></script>
+
+  <script>
+    // Scroll Progress Bar
+    function updateScrollProgress() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
+
+      // Show/hide back to top button
+      const backToTop = document.getElementById('backToTop');
+      if (scrollTop > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
+
+    // Scroll Animations
+    function handleScrollAnimations() {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.85) {
+          section.classList.add('visible');
+        }
+      });
+    }
+
+    // Stats Animation (if you decide to uncomment the stats section)
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 1500; // 1.5 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+
+        updateCounter();
+      });
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initial check for animations
+      handleScrollAnimations();
+
+      // Set up scroll event listeners
+      window.addEventListener('scroll', () => {
+        updateScrollProgress();
+        handleScrollAnimations();
+      });
+
+      // Back to top button
+      document.getElementById('backToTop').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Initialize stats animation if stats section is visible
+      const statsContainer = document.getElementById('statsContainer');
+      if (statsContainer) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsContainer);
+      }
+    });
+
+    // Handle font awesome icons loading
+    if (typeof FontAwesome !== 'undefined') {
+      FontAwesome.config = { autoReplaceSvg: 'nest' };
+    }
+  </script>
+</body>
+
+</html>

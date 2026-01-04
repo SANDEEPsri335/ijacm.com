@@ -1,0 +1,14 @@
+[
+  { "title":"Paper 1","authors":"Author A","article_id":"IJACM_01","pages":"1-5","published":"2025-01-01","doi":"https://doi.org/1" },
+  { "title":"Paper 2","authors":"Author B","article_id":"IJACM_02","pages":"6-10","published":"2025-01-02","doi":"https://doi.org/2" },
+  { "title":"Paper 3","authors":"Author C","article_id":"IJACM_03","pages":"11-15","published":"2025-01-03","doi":"https://doi.org/3" },
+  { "title":"Paper 4","authors":"Author D","article_id":"IJACM_04","pages":"16-20","published":"2025-01-04","doi":"https://doi.org/4" },
+  { "title":"Paper 5","authors":"Author E","article_id":"IJACM_05","pages":"21-25","published":"2025-01-05","doi":"https://doi.org/5" },
+  { "title":"Paper 6","authors":"Author F","article_id":"IJACM_06","pages":"26-30","published":"2025-01-06","doi":"https://doi.org/6" },
+  { "title":"Paper 7","authors":"Author G","article_id":"IJACM_07","pages":"31-35","published":"2025-01-07","doi":"https://doi.org/7" },
+  { "title":"Paper 8","authors":"Author H","article_id":"IJACM_08","pages":"36-40","published":"2025-01-08","doi":"https://doi.org/8" },
+  { "title":"Paper 9","authors":"Author I","article_id":"IJACM_09","pages":"41-45","published":"2025-01-09","doi":"https://doi.org/9" },
+  { "title":"Paper 10","authors":"Author J","article_id":"IJACM_10","pages":"46-50","published":"2025-01-10","doi":"https://doi.org/10" },
+  { "title":"Paper 11","authors":"Author K","article_id":"IJACM_11","pages":"51-55","published":"2025-01-11","doi":"https://doi.org/11" },
+  { "title":"Paper 12","authors":"Author L","article_id":"IJACM_12","pages":"56-60","published":"2025-01-12","doi":"https://doi.org/12" }
+]
