@@ -47,9 +47,10 @@ function parseCSVWithHeaders(text) {
   // Detect separator: comma OR tab
   const separator = lines[0].includes(",") ? "," : "\t";
 
+  // 🔥 CLEAN + NORMALIZE HEADERS
   const headers = lines[0]
     .split(separator)
-    .map(h => h.trim());
+    .map(h => h.trim().replace(/\uFEFF/g, "").toLowerCase());
 
   const rows = [];
 
@@ -66,27 +67,32 @@ function parseCSVWithHeaders(text) {
     });
 
     rows.push({
-  title: row["Title"] || "Untitled",
-  author: row["Author"] || "N/A",
+      title: row["title"] || "Untitled",
+      author: row["author"] || "N/A",
 
-  // ✅ FIX ISSUE FIELD
-  issueNo:
-    row["Issue_No"] ||
-    row["Issue No"] ||
-    row["Issue"] ||
-    "N/A",
+      // ✅ FIXED ISSUE FIELD
+      issueNo:
+        row["issue_no"] ||
+        row["issue no"] ||
+        row["issue"] ||
+        "N/A",
 
-  // ✅ FIX DOI FIELD
-  doi:
-    row["DOI"] ||
-    row["Doi"] ||
-    row["doi"] ||
-    "N/A",
+      // ✅ FIXED DOI FIELD
+      doi:
+        row["doi"] ||
+        row["do i"] ||
+        "N/A",
 
-  paperFile: row["Paper_File"] || "",
-  publishedDate: row["Published_Date"] || "N/A"
-});
+      paperFile:
+        row["paper_file"] ||
+        row["paper file"] ||
+        "",
 
+      publishedDate:
+        row["published_date"] ||
+        row["published date"] ||
+        "N/A"
+    });
   }
 
   return rows;
