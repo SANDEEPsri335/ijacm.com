@@ -1,9 +1,9 @@
 /* ======================================================
-   IJACM – CURRENT ISSUE (GUARANTEED VERSION)
-   Rule: Every CSV row = One visible article box
+   IJACM – CURRENT ISSUE (FINAL FIXED VERSION)
+   Every CSV row = One visible article box
    ====================================================== */
 
-const CSV_PATH = "/data.csv";   // IMPORTANT: absolute path
+const CSV_PATH = "/data.csv";
 const ITEMS_PER_PAGE = 9;
 
 let allArticles = [];
@@ -39,7 +39,7 @@ fetch(CSV_PATH)
   });
 
 /* ==============================
-   PARSE CSV (COMMA BASED)
+   PARSE CSV
 ================================ */
 function parseCSV(text) {
   const lines = text.trim().split("\n");
@@ -50,12 +50,12 @@ function parseCSV(text) {
     if (row.length < 6) continue;
 
     articles.push({
-      title: row[0].trim(),
-      author: row[1].trim(),
-      issue: row[2].trim(),
-      doi: row[3].trim(),
-      paperFile: row[4].trim(),
-      publishedDate: row[5].trim()
+      title: row[0]?.trim() || "Untitled",
+      author: row[1]?.trim() || "N/A",
+      issueNo: row[2]?.trim() || "N/A",
+      doi: row[3]?.trim() || "N/A",
+      paperFile: row[4]?.trim() || "",
+      publishedDate: row[5]?.trim() || "N/A"
     });
   }
 
@@ -102,29 +102,37 @@ function renderArticles() {
     const card = document.createElement("div");
     card.className = "article-card";
 
+    const viewBtn = article.paperFile
+      ? `<a href="/paper/${article.paperFile}"
+             target="_blank"
+             class="btn btn-primary">
+           <i class="fas fa-file-pdf"></i> View Paper
+         </a>`
+      : `<button class="btn btn-secondary" disabled>Paper N/A</button>`;
+
     card.innerHTML = `
       <span class="article-badge">RESEARCH ARTICLE</span>
+
       <div class="article-content">
         <h3>${article.title}</h3>
 
         <div class="article-meta">
-          <span class="article-authors">${article.author}</span>
-          <span>${article.publishedDate}</span>
+          <span class="article-authors">
+            <strong>Author:</strong> ${article.author}
+          </span>
+          <span>
+            <strong>Published:</strong> ${article.publishedDate}
+          </span>
         </div>
 
+        <p><strong>Issue:</strong> ${article.issueNo}</p>
+
         <div class="article-doi">
-          <strong>DOI:</strong> ${article.doi || "N/A"}
+          <strong>DOI:</strong> ${article.doi}
         </div>
 
         <div class="article-actions">
-          ${
-            article.paperFile
-              ? `<a href="/paper/${article.paperFile}" target="_blank"
-                   class="btn btn-primary">
-                   <i class="fas fa-file-pdf"></i> View Paper
-                 </a>`
-              : `<button class="btn btn-secondary" disabled>Paper N/A</button>`
-          }
+          ${viewBtn}
         </div>
       </div>
     `;
