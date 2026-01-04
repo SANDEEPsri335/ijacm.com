@@ -66,13 +66,27 @@ function parseCSVWithHeaders(text) {
     });
 
     rows.push({
-      title: row["Title"] || "Untitled",
-      author: row["Author"] || "N/A",
-      issueNo: row["Issue_No"] || "N/A",
-      doi: row["DOI"] || "N/A",
-      paperFile: row["Paper_File"] || "",
-      publishedDate: row["Published_Date"] || "N/A"
-    });
+  title: row["Title"] || "Untitled",
+  author: row["Author"] || "N/A",
+
+  // ✅ FIX ISSUE FIELD
+  issueNo:
+    row["Issue_No"] ||
+    row["Issue No"] ||
+    row["Issue"] ||
+    "N/A",
+
+  // ✅ FIX DOI FIELD
+  doi:
+    row["DOI"] ||
+    row["Doi"] ||
+    row["doi"] ||
+    "N/A",
+
+  paperFile: row["Paper_File"] || "",
+  publishedDate: row["Published_Date"] || "N/A"
+});
+
   }
 
   return rows;
